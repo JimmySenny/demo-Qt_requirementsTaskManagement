@@ -1,0 +1,37 @@
+<RCC>
+    <qresource prefix="/">
+        <file>about.png</file>
+        <file>aboutcchess.png</file>
+        <file>Board.jpg</file>
+        <file>Board.png</file>
+        <file>draw.png</file>
+        <file>load.png</file>
+        <file>name.png</file>
+        <file>new.png</file>
+        <file>quit.png</file>
+        <file>save.png</file>
+        <file>set.png</file>
+        <file>time.png</file>
+        <file>undo.png</file>
+        <file>windowIcon.png</file>
+        <file>B_J.png</file>
+        <file>B_K.png</file>
+        <file>B_M.png</file>
+        <file>B_P.png</file>
+        <file>B_S.png</file>
+        <file>B_X.png</file>
+        <file>B_Z.png</file>
+        <file>R_B.png</file>
+        <file>R_J.png</file>
+        <file>R_K.png</file>
+        <file>R_M.png</file>
+        <file>R_P.png</file>
+        <file>R_S.png</file>
+        <file>R_X.png</file>
+        <file>cc.png</file>
+        <file>no_chessman.png</file>
+        <file>redside.png</file>
+        <file>blackside.png</file>
+        <file>btn_pause.ico</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,289 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+BASEDEFINE_H	basedefine.h	10;"	d
+BASIC_MODE	basedefine.h	25;"	d
+BLACK	basedefine.h	23;"	d
+BWA	basedefine.h	/^const	int		BWA = (MW + SW) * 2;	\/\/棋格宽度$/;"	v
+BWA	basedefine.h	57;"	d
+B_BEGIN	basedefine.h	52;"	d
+B_CHESSMAN	basedefine.h	33;"	d
+B_END	basedefine.h	53;"	d
+B_J	basedefine.h	49;"	d
+B_K	basedefine.h	45;"	d
+B_K_IJ	chessface.h	/^    ChessIJ	    B_K_IJ;$/;"	m	class:ChessFace
+B_M	basedefine.h	48;"	d
+B_P	basedefine.h	50;"	d
+B_S	basedefine.h	46;"	d
+B_X	basedefine.h	47;"	d
+B_Z	basedefine.h	51;"	d
+CENTERWINDOW_H	center.h	2;"	d
+CHESSBOARD_H	chess.h	2;"	d
+CHESSFACE_H	chessface.h	11;"	d
+CHESSIJ_H	chessij.h	10;"	d
+CHESSMAN_H	chessman.h	11;"	d
+CHESSUNDO_H	chessundo.h	2;"	d
+Center	center.cpp	/^Center::Center(QWidget *parent)$/;"	f	class:Center
+Center	center.h	/^class Center: public QWidget$/;"	c
+Chess	chess.cpp	/^Chess::Chess(QWidget *parent)$/;"	f	class:Chess
+Chess	chess.h	/^class Chess : public QWidget$/;"	c
+ChessCheck	chessface.cpp	/^ChessFace::ChessCheck (ChessFace *& cface)$/;"	f	class:ChessFace
+ChessFace	chessface.cpp	/^ChessFace::ChessFace()$/;"	f	class:ChessFace
+ChessFace	chessface.h	/^class	ChessFace$/;"	c
+ChessIJ	chessij.cpp	/^ChessIJ::ChessIJ()$/;"	f	class:ChessIJ
+ChessIJ	chessij.h	/^class ChessIJ$/;"	c
+ChessMan	chessman.cpp	/^ChessMan::ChessMan()$/;"	f	class:ChessMan
+ChessMan	chessman.h	/^class	ChessMan$/;"	c
+ChessMoveRule	chessface.cpp	/^ChessFace::ChessMoveRule (ChessFace  *& cface, ChessIJ & from, ChessIJ & to)$/;"	f	class:ChessFace
+ChessNormal	chessface.cpp	/^ChessFace::ChessNormal (ChessFace  cface)$/;"	f	class:ChessFace
+ChessProc	chessface.cpp	/^ChessFace::ChessProc (ChessFace *& cface, ChessIJ & from, ChessIJ & to)$/;"	f	class:ChessFace
+ChessReSet	chess.cpp	/^void		Chess::ChessReSet()$/;"	f	class:Chess
+ChessUndo	chessundo.cpp	/^ChessUndo::ChessUndo()$/;"	f	class:ChessUndo
+ChessUndo	chessundo.h	/^class ChessUndo$/;"	c
+ChessUndoPop	chessundo.cpp	/^void		ChessUndo::ChessUndoPop (ChessFace & uface)$/;"	f	class:ChessUndo
+ChessUndoPush	chessundo.cpp	/^int		ChessUndo::ChessUndoPush (ChessFace cface)$/;"	f	class:ChessUndo
+Chessface	chessface.h	/^    ChessMan    Chessface[10][9];	\/\/棋盘矩阵$/;"	m	class:ChessFace
+Chessi	chessij.h	/^    int 	Chessi;	$/;"	m	class:ChessIJ
+Chessid	chessman.h	/^    int 	Chessid;$/;"	m	class:ChessMan
+Chessij	chessman.h	/^    ChessIJ	Chessij;$/;"	m	class:ChessMan
+Chessimage	chessman.h	/^    QImage	Chessimage;$/;"	m	class:ChessMan
+Chessj	chessij.h	/^    int 	Chessj;$/;"	m	class:ChessIJ
+Chessundo	chessundo.h	/^    ChessFace Chessundo[MAX_UNDOSTEP];\/\/可悔的棋步$/;"	m	class:ChessUndo
+DIALOGABOUTCCHESS_H	dialogaboutcchess.h	2;"	d
+DIALOGASKDRAW_H	dialogaskdraw.h	2;"	d
+DIALOGSETUNDOSTEP_H	dialogsetundostep.h	2;"	d
+DialogAboutCChess	dialogaboutcchess.cpp	/^DialogAboutCChess::DialogAboutCChess(QWidget *parent) :$/;"	f	class:DialogAboutCChess
+DialogAboutCChess	dialogaboutcchess.h	/^class DialogAboutCChess : public QDialog$/;"	c
+DialogAskDraw	dialogaskdraw.cpp	/^DialogAskDraw::DialogAskDraw(int 	side, QWidget *parent) :$/;"	f	class:DialogAskDraw
+DialogAskDraw	dialogaskdraw.h	/^class DialogAskDraw : public QDialog$/;"	c
+DialogSetUndostep	dialogsetundostep.cpp	/^DialogSetUndostep::DialogSetUndostep(QWidget *parent) :$/;"	f	class:DialogSetUndostep
+DialogSetUndostep	dialogsetundostep.h	/^class DialogSetUndostep : public QDialog$/;"	c
+FAILURE	basedefine.h	18;"	d
+False	basedefine.h	15;"	d
+IsBlack	basedefine.cpp	/^int	IsBlack(int	chessid)$/;"	f
+IsRed	basedefine.cpp	/^int	IsRed(int chessid)$/;"	f
+IsRightPlayer	basedefine.cpp	/^int		IsRightPlayer(int player, int chessid)$/;"	f
+IsSameSide	basedefine.cpp	/^int	IsSameSide(int chessid1, int chessid2)$/;"	f
+LOADANDSAVE_H	loadandsave.h	2;"	d
+LoadAndSave	loadandsave.cpp	/^LoadAndSave::LoadAndSave()$/;"	f	class:LoadAndSave
+LoadAndSave	loadandsave.h	/^class LoadAndSave$/;"	c
+MAINWINDOW_H	mainwindow.h	2;"	d
+MAX_TIME	basedefine.h	27;"	d
+MAX_UNDOSTEP	basedefine.h	29;"	d
+MW	basedefine.h	/^const	int		MW = 25;		\/\/棋子的宽度$/;"	v
+MW	basedefine.h	55;"	d
+MainWindow	mainwindow.cpp	/^MainWindow::MainWindow(QWidget *parent)$/;"	f	class:MainWindow
+MainWindow	mainwindow.h	/^class MainWindow : public QMainWindow$/;"	c
+NONE	basedefine.h	21;"	d
+NO_CHESSMAN	basedefine.h	31;"	d
+RED	basedefine.h	22;"	d
+R_B	basedefine.h	41;"	d
+R_BEGIN	basedefine.h	42;"	d
+R_CHESSMAN	basedefine.h	32;"	d
+R_END	basedefine.h	43;"	d
+R_J	basedefine.h	39;"	d
+R_K	basedefine.h	35;"	d
+R_K_IJ	chessface.h	/^    ChessIJ 	R_K_IJ;$/;"	m	class:ChessFace
+R_M	basedefine.h	38;"	d
+R_P	basedefine.h	40;"	d
+R_S	basedefine.h	36;"	d
+R_X	basedefine.h	37;"	d
+SIDEBAR_H	sidebar.h	2;"	d
+STRINGDEFINE_H	stringdefine.h	2;"	d
+SUCCESS	basedefine.h	17;"	d
+SW	basedefine.h	/^const	int		SW = 2;			\/\/棋子间隔的一半$/;"	v
+SW	basedefine.h	56;"	d
+SideBar	sidebar.cpp	/^SideBar::SideBar(QWidget *parent) :$/;"	f	class:SideBar
+SideBar	sidebar.h	/^class SideBar : public QWidget$/;"	c
+SideBarReSet	sidebar.cpp	/^void		SideBar::SideBarReSet ()$/;"	f	class:SideBar
+StringDefine	stringdefine.cpp	/^StringDefine::StringDefine()$/;"	f	class:StringDefine
+StringDefine	stringdefine.h	/^class StringDefine$/;"	c
+TIMER_MODE	basedefine.h	26;"	d
+True	basedefine.h	14;"	d
+UndoStep	chessundo.h	/^    int		UndoStep;	\/\/当前可悔棋的棋步数$/;"	m	class:ChessUndo
+UndoStep_set	chessundo.h	/^    int		UndoStep_set;		\/\/设置的悔棋步数$/;"	m	class:ChessUndo
+WINNERBOX_H	winnerbox.h	2;"	d
+WinnerBox	winnerbox.cpp	/^WinnerBox::WinnerBox(QString str, QWidget *parent) :$/;"	f	class:WinnerBox
+WinnerBox	winnerbox.h	/^class WinnerBox : public QDialog$/;"	c
+XBW	basedefine.h	/^const	int 	XBW = BWA * 9;	\/\/棋盘宽 = 棋格 * 9$/;"	v
+XBW	basedefine.h	58;"	d
+YBW	basedefine.h	/^const	int		YBW = BWA * 10;	\/\/棋盘高 = 棋格 * 10$/;"	v
+YBW	basedefine.h	59;"	d
+askdrawbox	mainwindow.h	/^	DialogAskDraw * askdrawbox;$/;"	m	class:MainWindow
+btn_agree	dialogaskdraw.h	/^	QPushButton * btn_agree;$/;"	m	class:DialogAskDraw
+btn_b	sidebar.h	/^	QPushButton * btn_b;$/;"	m	class:SideBar
+btn_know	dialogaboutcchess.h	/^    QPushButton * btn_know; \/\/上一页$/;"	m	class:DialogAboutCChess
+btn_ok	dialogsetundostep.h	/^    QPushButton * btn_ok;$/;"	m	class:DialogSetUndostep
+btn_quit	winnerbox.h	/^    QPushButton * btn_quit;$/;"	m	class:WinnerBox
+btn_r	sidebar.h	/^	QPushButton * btn_r;$/;"	m	class:SideBar
+btn_refuse	dialogaskdraw.h	/^	QPushButton * btn_refuse;$/;"	m	class:DialogAskDraw
+btn_restart	winnerbox.h	/^    QPushButton * btn_restart;$/;"	m	class:WinnerBox
+btn_start	sidebar.h	/^	QPushButton * btn_start;$/;"	m	class:SideBar
+canclick	chess.h	/^	bool		canclick;		\/\/可以移动 则为1 否则为0$/;"	m	class:Chess
+center	mainwindow.h	/^    Center* center;	\/\/中心自定义组件$/;"	m	class:MainWindow
+cface	chess.h	/^    ChessFace * cface;$/;"	m	class:Chess
+chess	center.h	/^    Chess * chess;$/;"	m	class:Center
+creatMenus	mainwindow.cpp	/^void		MainWindow::creatMenus ()$/;"	f	class:MainWindow
+creatToolBar	mainwindow.cpp	/^void		MainWindow::creatToolBar ()$/;"	f	class:MainWindow
+cundo	chess.h	/^    ChessUndo * cundo;$/;"	m	class:Chess
+desij	chess.h	/^    ChessIJ	* desij;$/;"	m	class:Chess
+getStaticMetaObject	moc_dialogsetname.cpp	/^const QMetaObject &DialogSetName::getStaticMetaObject() { return staticMetaObject; }$/;"	f	class:DialogSetName
+getStaticMetaObject	moc_sidebarbasic.cpp	/^const QMetaObject &SideBarBasic::getStaticMetaObject() { return staticMetaObject; }$/;"	f	class:SideBarBasic
+getStaticMetaObject	moc_sidebartimer.cpp	/^const QMetaObject &SideBarTimer::getStaticMetaObject() { return staticMetaObject; }$/;"	f	class:SideBarTimer
+initChessFace	chessface.cpp	/^ChessFace::initChessFace()$/;"	f	class:ChessFace
+initChessUndo	chessundo.cpp	/^void		ChessUndo::initChessUndo()$/;"	f	class:ChessUndo
+label	dialogsetundostep.h	/^    QLabel	* label;$/;"	m	class:DialogSetUndostep
+label	winnerbox.h	/^    QLabel	* label;$/;"	m	class:WinnerBox
+label_bp	sidebar.h	/^	QLabel * label_bp;$/;"	m	class:SideBar
+label_rp	sidebar.h	/^	QLabel * label_rp;$/;"	m	class:SideBar
+label_show	dialogaskdraw.h	/^	QLabel * label_show;$/;"	m	class:DialogAskDraw
+loadfromfile	loadandsave.cpp	/^int		LoadAndSave::loadfromfile (const	char	* filename, char *& databuffer)$/;"	f	class:LoadAndSave
+main	main.cpp	/^int main(int argc, char *argv[])$/;"	f
+menu_game	mainwindow.h	/^    QMenu	* menu_game;$/;"	m	class:MainWindow
+menu_help	mainwindow.h	/^    QMenu	* menu_help;$/;"	m	class:MainWindow
+menu_modetoolbar	mainwindow.h	/^    QMenu	* menu_modetoolbar;	\/\/设置游戏模式的一级菜单$/;"	m	class:MainWindow
+menu_set	mainwindow.h	/^    QMenu	* menu_set;$/;"	m	class:MainWindow
+metaObject	moc_dialogsetname.cpp	/^const QMetaObject *DialogSetName::metaObject() const$/;"	f	class:DialogSetName
+metaObject	moc_sidebarbasic.cpp	/^const QMetaObject *SideBarBasic::metaObject() const$/;"	f	class:SideBarBasic
+metaObject	moc_sidebartimer.cpp	/^const QMetaObject *SideBarTimer::metaObject() const$/;"	f	class:SideBarTimer
+mg_action_draw	mainwindow.h	/^    QAction	* mg_action_draw;	\/\/和棋$/;"	m	class:MainWindow
+mg_action_loadgame	mainwindow.h	/^    QAction	* mg_action_loadgame; \/\/载入游戏$/;"	m	class:MainWindow
+mg_action_newgame	mainwindow.h	/^    QAction	* mg_action_newgame; \/\/游戏菜单下动作 新游戏$/;"	m	class:MainWindow
+mg_action_quit	mainwindow.h	/^    QAction	* mg_action_quit;	\/\/退出游戏$/;"	m	class:MainWindow
+mg_action_savegame	mainwindow.h	/^    QAction	* mg_action_savegame; \/\/保存游戏$/;"	m	class:MainWindow
+mg_action_undo	mainwindow.h	/^    QAction	* mg_action_undo;	\/\/悔棋$/;"	m	class:MainWindow
+mh_action_about	mainwindow.h	/^    QAction	* mh_action_about; \/\/关于本软件$/;"	m	class:MainWindow
+mh_action_chinesechess	mainwindow.h	/^    QAction	* mh_action_chinesechess;	\/\/关于中国象棋的介绍$/;"	m	class:MainWindow
+mouseMoveEvent	chess.cpp	/^void		Chess::mouseMoveEvent (QMouseEvent * event)$/;"	f	class:Chess
+mousePress	chess.h	/^    bool		mousePress;	\/\/若左键按下则为1 否则为0$/;"	m	class:Chess
+mousePressEvent	chess.cpp	/^void		Chess::mousePressEvent (QMouseEvent * event)$/;"	f	class:Chess
+mouseRelease	chess.h	/^    bool		mouseRelease;\/\/若左键松开则为0 否则为1$/;"	m	class:Chess
+mouseReleaseEvent	chess.cpp	/^void		Chess::mouseReleaseEvent (QMouseEvent * event)$/;"	f	class:Chess
+mouseToChessFace	chessface.cpp	/^ChessFace::mouseToChessFace (int board_x, int board_y)	$/;"	f	class:ChessFace
+mouseToChessid	chessface.cpp	/^ChessFace::mouseToChessid(ChessFace  *& cface, ChessIJ & press)	\/\/鼠标点击的是什么棋子$/;"	f	class:ChessFace
+moveij	chess.h	/^    ChessIJ  moveij;$/;"	m	class:Chess
+ms_action_modetoolbarbasic	mainwindow.h	/^    QAction	* ms_action_modetoolbarbasic;	\/\/设置普通模式$/;"	m	class:MainWindow
+ms_action_modetoolbartime	mainwindow.h	/^    QAction	* ms_action_modetoolbartime;	\/\/设置计时模式$/;"	m	class:MainWindow
+ms_action_setundostep	mainwindow.h	/^    QAction	* ms_action_setundostep;\/\/设置悔棋步数$/;"	m	class:MainWindow
+operator !=	chessij.cpp	/^bool		ChessIJ::operator!=(ChessIJ & ij)const$/;"	f	class:ChessIJ
+operator =	chessundo.cpp	/^ChessUndo & ChessUndo::operator=(ChessUndo & cundo)$/;"	f	class:ChessUndo
+operator ==	chessij.cpp	/^bool		ChessIJ::operator==(ChessIJ & ij)const$/;"	f	class:ChessIJ
+paintEvent	chess.cpp	/^void		Chess::paintEvent (QPaintEvent *)$/;"	f	class:Chess
+pixmap_b	sidebar.h	/^	QPixmap * pixmap_b;$/;"	m	class:SideBar
+pixmap_r	sidebar.h	/^	QPixmap * pixmap_r;$/;"	m	class:SideBar
+pressij	chess.h	/^    ChessIJ  pressij;$/;"	m	class:Chess
+qt_meta_data_DialogSetName	moc_dialogsetname.cpp	/^static const uint qt_meta_data_DialogSetName[] = {$/;"	v	file:
+qt_meta_data_SideBarBasic	moc_sidebarbasic.cpp	/^static const uint qt_meta_data_SideBarBasic[] = {$/;"	v	file:
+qt_meta_data_SideBarTimer	moc_sidebartimer.cpp	/^static const uint qt_meta_data_SideBarTimer[] = {$/;"	v	file:
+qt_meta_stringdata_DialogSetName	moc_dialogsetname.cpp	/^static const char qt_meta_stringdata_DialogSetName[] = {$/;"	v	file:
+qt_meta_stringdata_SideBarBasic	moc_sidebarbasic.cpp	/^static const char qt_meta_stringdata_SideBarBasic[] = {$/;"	v	file:
+qt_meta_stringdata_SideBarTimer	moc_sidebartimer.cpp	/^static const char qt_meta_stringdata_SideBarTimer[] = {$/;"	v	file:
+qt_metacall	moc_dialogsetname.cpp	/^int DialogSetName::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:DialogSetName
+qt_metacall	moc_sidebarbasic.cpp	/^int SideBarBasic::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:SideBarBasic
+qt_metacall	moc_sidebartimer.cpp	/^int SideBarTimer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:SideBarTimer
+qt_metacast	moc_dialogsetname.cpp	/^void *DialogSetName::qt_metacast(const char *_clname)$/;"	f	class:DialogSetName
+qt_metacast	moc_sidebarbasic.cpp	/^void *SideBarBasic::qt_metacast(const char *_clname)$/;"	f	class:SideBarBasic
+qt_metacast	moc_sidebartimer.cpp	/^void *SideBarTimer::qt_metacast(const char *_clname)$/;"	f	class:SideBarTimer
+qt_static_metacall	moc_dialogsetname.cpp	/^void DialogSetName::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:DialogSetName
+qt_static_metacall	moc_sidebarbasic.cpp	/^void SideBarBasic::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:SideBarBasic
+qt_static_metacall	moc_sidebartimer.cpp	/^void SideBarTimer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:SideBarTimer
+releaseij	chess.h	/^    ChessIJ  releaseij;$/;"	m	class:Chess
+savedata_buffer	mainwindow.h	/^    char	* savedata_buffer;$/;"	m	class:MainWindow
+savetofile	loadandsave.cpp	/^int		LoadAndSave::savetofile (const	char * filename, char *& databuffer, int length)$/;"	f	class:LoadAndSave
+setundosetp	mainwindow.h	/^    DialogSetUndostep * setundosetp;$/;"	m	class:MainWindow
+side	chessface.h	/^    int 		side;	\/\/那方执子的标志$/;"	m	class:ChessFace
+sidebar	center.h	/^    SideBar * sidebar;$/;"	m	class:Center
+signal_basic_btn_start	moc_sidebarbasic.cpp	/^void SideBarBasic::signal_basic_btn_start()$/;"	f	class:SideBarBasic
+signal_player_name	moc_dialogsetname.cpp	/^void DialogSetName::signal_player_name(QString _t1, QString _t2)$/;"	f	class:DialogSetName
+signal_timer_btn_start	moc_sidebartimer.cpp	/^void SideBarTimer::signal_timer_btn_start()$/;"	f	class:SideBarTimer
+signal_timer_over	moc_sidebartimer.cpp	/^void SideBarTimer::signal_timer_over(int _t1)$/;"	f	class:SideBarTimer
+size_center	mainwindow.h	/^	int		size_center;$/;"	m	class:MainWindow
+size_cface	mainwindow.h	/^	int		size_cface;$/;"	m	class:MainWindow
+size_chess	mainwindow.h	/^	int		size_chess;$/;"	m	class:MainWindow
+size_cundo	mainwindow.h	/^	int		size_cundo;$/;"	m	class:MainWindow
+size_sidebar	mainwindow.h	/^	int		size_sidebar;$/;"	m	class:MainWindow
+slider	dialogsetundostep.h	/^    QSlider	* slider;$/;"	m	class:DialogSetUndostep
+slot_action_draw	mainwindow.cpp	/^void		MainWindow::slot_action_draw ()\/\/和棋的槽函数$/;"	f	class:MainWindow
+slot_action_newgame	mainwindow.cpp	/^void		MainWindow::slot_action_newgame ()	\/\/新游戏的槽函数$/;"	f	class:MainWindow
+slot_action_undo_enable	mainwindow.cpp	/^void		MainWindow::slot_action_undo_enable (int ustep)\/\/接收悔棋按钮使能的信号的槽$/;"	f	class:MainWindow
+slot_action_undo_triggered	mainwindow.cpp	/^void		MainWindow::slot_action_undo_triggered ()$/;"	f	class:MainWindow
+slot_after_draw	mainwindow.cpp	/^void		MainWindow::slot_after_draw (int resp)$/;"	f	class:MainWindow
+slot_btn_agree_clicked	dialogaskdraw.cpp	/^void		DialogAskDraw::slot_btn_agree_clicked ()$/;"	f	class:DialogAskDraw
+slot_btn_b	sidebar.cpp	/^void		SideBar::slot_btn_b ()$/;"	f	class:SideBar
+slot_btn_r	sidebar.cpp	/^void		SideBar::slot_btn_r ()$/;"	f	class:SideBar
+slot_btn_refuse_clicked	dialogaskdraw.cpp	/^void		DialogAskDraw::slot_btn_refuse_clicked ()$/;"	f	class:DialogAskDraw
+slot_btn_start	sidebar.cpp	/^void		SideBar::slot_btn_start ()$/;"	f	class:SideBar
+slot_btnok_clicked	dialogsetundostep.cpp	/^void		DialogSetUndostep::slot_btnok_clicked ()$/;"	f	class:DialogSetUndostep
+slot_chesscheck	mainwindow.cpp	/^void		MainWindow::slot_chesscheck ()$/;"	f	class:MainWindow
+slot_chessproc_status	mainwindow.cpp	/^void		MainWindow::slot_chessproc_status (int chessid, ChessIJ srcij, ChessIJ  desij, int flag)$/;"	f	class:MainWindow
+slot_gameover	mainwindow.cpp	/^void		MainWindow::slot_gameover (int side)$/;"	f	class:MainWindow
+slot_mg_action_loadgame	mainwindow.cpp	/^void		MainWindow::slot_mg_action_loadgame ()$/;"	f	class:MainWindow
+slot_mg_action_savegame	mainwindow.cpp	/^void		MainWindow::slot_mg_action_savegame ()$/;"	f	class:MainWindow
+slot_mh_action_about	mainwindow.cpp	/^void		MainWindow::slot_mh_action_about ()$/;"	f	class:MainWindow
+slot_mh_action_chinesechess	mainwindow.cpp	/^void		MainWindow::slot_mh_action_chinesechess ()$/;"	f	class:MainWindow
+slot_mouseEvent_m	chess.cpp	/^void		Chess::slot_mouseEvent_m (int i, int j)$/;"	f	class:Chess
+slot_mouseEvent_p	chess.cpp	/^void		Chess::slot_mouseEvent_p (int , int )$/;"	f	class:Chess
+slot_mouseEvent_r	chess.cpp	/^void		Chess::slot_mouseEvent_r (int , int )$/;"	f	class:Chess
+slot_ms_action_modebasic	mainwindow.cpp	/^void		MainWindow::slot_ms_action_modebasic ()$/;"	f	class:MainWindow
+slot_ms_action_modetime	mainwindow.cpp	/^void		MainWindow::slot_ms_action_modetime ()$/;"	f	class:MainWindow
+slot_ms_action_setundostep	mainwindow.cpp	/^void		MainWindow::slot_ms_action_setundostep ()$/;"	f	class:MainWindow
+slot_setundostep	mainwindow.cpp	/^void		MainWindow::slot_setundostep (int step)$/;"	f	class:MainWindow
+slot_sidebar_btn_timerstart	center.cpp	/^void		Center::slot_sidebar_btn_timerstart ()$/;"	f	class:Center
+slot_start_game	mainwindow.cpp	/^void		MainWindow::slot_start_game ()$/;"	f	class:MainWindow
+slot_timerover	mainwindow.cpp	/^void		MainWindow::slot_timerover (int side)$/;"	f	class:MainWindow
+slot_turnSide	center.cpp	/^void		Center::slot_turnSide (int side)$/;"	f	class:Center
+slot_winnerbox_quit	winnerbox.cpp	/^void		WinnerBox::slot_winnerbox_quit ()$/;"	f	class:WinnerBox
+slot_winnerbox_quit_clicked	mainwindow.cpp	/^void		MainWindow::slot_winnerbox_quit_clicked ()$/;"	f	class:MainWindow
+slot_winnerbox_restart	winnerbox.cpp	/^void		WinnerBox::slot_winnerbox_restart ()$/;"	f	class:WinnerBox
+spinbox	dialogsetundostep.h	/^    QSpinBox * spinbox;$/;"	m	class:DialogSetUndostep
+srcij	chess.h	/^    ChessIJ	* srcij;$/;"	m	class:Chess
+staticMetaObject	moc_dialogsetname.cpp	/^const QMetaObject DialogSetName::staticMetaObject = {$/;"	m	class:DialogSetName	file:
+staticMetaObject	moc_sidebarbasic.cpp	/^const QMetaObject SideBarBasic::staticMetaObject = {$/;"	m	class:SideBarBasic	file:
+staticMetaObject	moc_sidebartimer.cpp	/^const QMetaObject SideBarTimer::staticMetaObject = {$/;"	m	class:SideBarTimer	file:
+staticMetaObjectExtraData	moc_dialogsetname.cpp	/^const QMetaObjectExtraData DialogSetName::staticMetaObjectExtraData = {$/;"	m	class:DialogSetName	file:
+staticMetaObjectExtraData	moc_sidebarbasic.cpp	/^const QMetaObjectExtraData SideBarBasic::staticMetaObjectExtraData = {$/;"	m	class:SideBarBasic	file:
+staticMetaObjectExtraData	moc_sidebartimer.cpp	/^const QMetaObjectExtraData SideBarTimer::staticMetaObjectExtraData = {$/;"	m	class:SideBarTimer	file:
+str_about	stringdefine.h	/^    QString 	str_about;$/;"	m	class:StringDefine
+str_black_draw	stringdefine.h	/^    QString		str_black_draw;$/;"	m	class:StringDefine
+str_black_go	stringdefine.h	/^	QString		str_black_go;$/;"	m	class:StringDefine
+str_black_win	stringdefine.h	/^    QString		str_black_win;$/;"	m	class:StringDefine
+str_check	stringdefine.h	/^    QString		str_check;$/;"	m	class:StringDefine
+str_def	mainwindow.h	/^	StringDefine		* str_def;$/;"	m	class:MainWindow
+str_draw	stringdefine.h	/^    QString		str_draw;$/;"	m	class:StringDefine
+str_no_cman	stringdefine.h	/^    QString		str_no_cman;$/;"	m	class:StringDefine
+str_no_rule	stringdefine.h	/^    QString		str_no_rule;$/;"	m	class:StringDefine
+str_red_draw	stringdefine.h	/^    QString		str_red_draw;$/;"	m	class:StringDefine
+str_red_go	stringdefine.h	/^	QString		str_red_go;$/;"	m	class:StringDefine
+str_red_win	stringdefine.h	/^    QString		str_red_win;$/;"	m	class:StringDefine
+str_start	stringdefine.h	/^	QString		str_start;$/;"	m	class:StringDefine
+str_tile_name	stringdefine.h	/^	QString		str_tile_name;$/;"	m	class:StringDefine
+str_waitstart	stringdefine.h	/^	QString		str_waitstart;$/;"	m	class:StringDefine
+t_action_draw	mainwindow.h	/^    QAction	* t_action_draw;	\/\/和棋$/;"	m	class:MainWindow
+t_action_newgame	mainwindow.h	/^    QAction	* t_action_newgame;	\/\/新游戏$/;"	m	class:MainWindow
+t_action_quit	mainwindow.h	/^    QAction	* t_action_quit;	\/\/退出$/;"	m	class:MainWindow
+t_action_undo	mainwindow.h	/^    QAction	* t_action_undo;	\/\/悔棋$/;"	m	class:MainWindow
+textedit	dialogaboutcchess.h	/^    QTextEdit * textedit; \/\/文本框 显示关于中国象棋的内容$/;"	m	class:DialogAboutCChess
+timeMode_flag	sidebar.cpp	/^int	SideBar::timeMode_flag = 0;$/;"	m	class:SideBar	file:
+timeMode_flag	sidebar.h	/^	static	int	timeMode_flag;\/\/标志当前的模式  BASIC_MODE为正常 TIMER_MODE为计时$/;"	m	class:SideBar
+time_b_lost	sidebar.h	/^	int 		time_b_lost;$/;"	m	class:SideBar
+time_r_lost	sidebar.h	/^	int		time_r_lost;$/;"	m	class:SideBar
+timerEvent	sidebar.cpp	/^void		SideBar::timerEvent (QTimerEvent * e)$/;"	f	class:SideBar
+timerId_b	sidebar.h	/^	int		timerId_b;$/;"	m	class:SideBar
+timerId_r	sidebar.h	/^	int 		timerId_r;$/;"	m	class:SideBar
+timerId_start	sidebar.h	/^	int		timerId_start;$/;"	m	class:SideBar
+timer_label_b	sidebar.h	/^	QLabel * timer_label_b;$/;"	m	class:SideBar
+timer_label_r	sidebar.h	/^	QLabel * timer_label_r;$/;"	m	class:SideBar
+toolbar	mainwindow.h	/^    QToolBar	* toolbar;$/;"	m	class:MainWindow
+turn2blackpix	sidebar.cpp	/^void		SideBar::turn2blackpix ()$/;"	f	class:SideBar
+turn2redpix	sidebar.cpp	/^void		SideBar::turn2redpix ()$/;"	f	class:SideBar
+uface	chess.h	/^    ChessFace * uface;$/;"	m	class:Chess
+updateChessFaceMan	chessface.cpp	/^ChessFace::updateChessFaceMan(ChessFace *& cface, \\$/;"	f	class:ChessFace
+winnerbox	mainwindow.h	/^    WinnerBox * winnerbox;$/;"	m	class:MainWindow
+zeroChessMan	chessman.cpp	/^ChessMan::zeroChessMan()$/;"	f	class:ChessMan
+~ChessFace	chessface.h	/^    ~ChessFace(){}$/;"	f	class:ChessFace
+~ChessMan	chessman.h	/^    ~ChessMan(){}$/;"	f	class:ChessMan
+~ChessUndo	chessundo.h	/^    ~ChessUndo(){}$/;"	f	class:ChessUndo
+~MainWindow	mainwindow.cpp	/^MainWindow::~MainWindow()$/;"	f	class:MainWindow
