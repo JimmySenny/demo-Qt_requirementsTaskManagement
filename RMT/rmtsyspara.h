@@ -22,16 +22,9 @@
 #define PASSWD_MAXLEN       16
 #define PASSWD_MINLEN       6
 
+/* 全局数据定义*/
+static char conf_file[CONF_FILE_MAXLEN]="~/rmtconf1.ini";
 
-extern char conf_file[CONF_FILE_MAXLEN];
-/* 全局数据定义
-
-#ifdef Q_OS_LINUX
-strcpy(conf_file, "~/rmtconf.ini");
-#e  Q_OS_WIN
-strcpy(conf_file, "C:\\Users\\Public\\rmtconf.ini");
-#endif
-*/
 
 
 

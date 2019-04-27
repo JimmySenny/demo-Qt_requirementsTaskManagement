@@ -44,17 +44,18 @@ bool
 RmtLogin::login_init_conf(){
 
     //strcpy(conf_file, "C:\\Users\\Public\\rmtconf.ini");
-    //QDebug("%s", conf_file);
+    //qDebug("%s", conf_file);
 
     qDebug() << "DocumentsLocation: " << QStandardPaths::displayName(QStandardPaths::DocumentsLocation);
     //path = new QStandardPaths::QStandardPaths();
     //QMessageBox::critical(0, QObject::tr("tst"),
     //QStandardPaths::displayName(QStandardPaths::DocumentsLocation), QMessageBox::Cancel);
 
-    QFile file( "./RmtConf.ini" );
-
-    if ( file.exists("./RmtConf.ini") ){
+    QFile file( conf_file );
+    qDebug()<<conf_file;
+    if ( QFile::exists("H:\\") ){
         emit this->signal_login_chk_err(ERR_CONF_NOTFUND);
+        qDebug() << "RmtConf.ini 不存在";
     }else{
         qDebug() << "RmtConf.ini 存在";
     }
