@@ -8,12 +8,14 @@ RmtLogin::RmtLogin(QWidget *parent) :
     ui->setupUi(this);    
     msg = new RmtMessageBox();
 
-    if( login_init() ){
-        emit signal_login_chk_err(10000);
+    if( !login_init() ){
+        emit signal_login_chk_err(ERR_SYS);
     }
 
+    if( !login_init_conf()){
+        emit signal_login_chk_err(ERR_CONF);
 
-
+    }
 
     connect(this->ui->pushButton_login, SIGNAL(clicked()), \
             this,SLOT(slot_login_pbuttonlogin_to_mainwindow()));
@@ -41,11 +43,31 @@ RmtLogin::login_init(){
 bool
 RmtLogin::login_init_conf(){
 
-    if ( file->exists("./conf/sys.ini") ){
+    //strcpy(conf_file, "C:\\Users\\Public\\rmtconf.ini");
+    //QDebug("%s", conf_file);
 
+    qDebug() << "DocumentsLocation: " << QStandardPaths::displayName(QStandardPaths::DocumentsLocation);
+    //path = new QStandardPaths::QStandardPaths();
+    //QMessageBox::critical(0, QObject::tr("tst"),
+    //QStandardPaths::displayName(QStandardPaths::DocumentsLocation), QMessageBox::Cancel);
+
+    QFile file( "./RmtConf.ini" );
+
+    if ( file.exists("./RmtConf.ini") ){
+        emit this->signal_login_chk_err(ERR_CONF_NOTFUND);
+    }else{
+        qDebug() << "RmtConf.ini 存在";
     }
 
-    return 0;
+    qDebug() << "RmtConf";
+    /*
+    QString qstrname = RmtConf().GetConf("user","name").toString();
+    qDebug() << qstrname;
+    QString qstrpasswd = RmtConf().GetConf("user","password").toString();
+    qDebug() << qstrpasswd;
+    */
+
+    return true;
 }
 
 bool
@@ -61,6 +83,8 @@ bool
 RmtLogin::chk_user_pwd(){
     QString str_user = this->ui->lineEdit_name->text();
     QString str_pwd = this->ui->lineEdit_pwd->text();
+
+    qDebug()<< str_user;
 
     //TODO
     if(str_user.compare("000") || \

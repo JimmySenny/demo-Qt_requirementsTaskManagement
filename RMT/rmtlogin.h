@@ -2,12 +2,8 @@
 #define RMTLOGIN_H
 
 #include <QMainWindow>
-#include <QFile>
-#include <QString>
-#include <string>
 
-#include "rmtmainwindow.h"
-#include "rmtmessagebox.h"
+#include "rmtcomm.h"
 
 namespace Ui {
 class RmtLogin;
@@ -31,10 +27,13 @@ public:
     bool chk_input();    //校验账号密码
     bool chk_user_pwd();    //校验账号密码
 
+    QFile * file;
+    QStandardPaths *path ;
+
 private:
     Ui::RmtLogin *ui;
     RmtMessageBox * msg;
-    QFile * file;
+
 
 };
 

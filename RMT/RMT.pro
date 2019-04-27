@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui widgets
+QT       += core gui widgets sql
 
 TARGET = RMT
 TEMPLATE = app
@@ -20,18 +20,30 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-CONFIG += c++11
+#CONFIG += c++11
+CONFIG += console c++11
+
+#QMAKE_CXXFLAGS += -std=c++11
 
 SOURCES += \
         main.cpp \
+    rmtconf.cpp \
         rmtlogin.cpp \
     rmtmainwindow.cpp \
-    rmtmessagebox.cpp
+    rmtmessagebox.cpp \
+    singletonuser.cpp \
+    dbmysql.cpp
 
 HEADERS += \
+    rmtcomm.h \
+    rmtconf.h \
         rmtlogin.h \
     rmtmainwindow.h \
-    rmtmessagebox.h
+    rmtmessagebox.h \
+    rmtsyspara.h \
+    singletonuser.h \
+    rmtbusipara.h \
+    dbmysql.h
 
 FORMS += \
         rmtlogin.ui \
@@ -42,3 +54,5 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+#CONFIG += console
