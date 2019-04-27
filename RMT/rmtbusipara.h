@@ -1,0 +1,4 @@
+#ifndef RMTBUSIPARA_H
+#define RMTBUSIPARA_H
+
+#endif // RMTBUSIPARA_H
