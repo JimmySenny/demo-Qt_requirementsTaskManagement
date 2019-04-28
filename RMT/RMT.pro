@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui widgets
+QT       += core gui widgets sql
 
 TARGET = RMT
 TEMPLATE = app
@@ -31,7 +31,8 @@ SOURCES += \
 HEADERS += \
         rmtlogin.h \
     rmtmainwindow.h \
-    rmtmessagebox.h
+    rmtmessagebox.h \
+    rmt.h
 
 FORMS += \
         rmtlogin.ui \

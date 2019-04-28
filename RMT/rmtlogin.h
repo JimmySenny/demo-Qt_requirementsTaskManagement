@@ -4,8 +4,8 @@
 #include <QMainWindow>
 #include <QFile>
 #include <QString>
-#include <string>
 
+#include "rmt.h"
 #include "rmtmainwindow.h"
 #include "rmtmessagebox.h"
 
