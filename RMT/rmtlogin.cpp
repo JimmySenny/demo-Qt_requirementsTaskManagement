@@ -6,23 +6,26 @@ RmtLogin::RmtLogin(QWidget *parent) :
     ui(new Ui::RmtLogin)
 {
     ui->setupUi(this);    
+    conf_value = new RmtConfValue();
     msg = new RmtMessageBox();
+    connect(this,SIGNAL(signal_login_chk_err(int)),\
+            msg,SLOT(slot_msgbox_set_code(int)));
+
 
     if( !login_init() ){
         emit signal_login_chk_err(ERR_SYS);
+        this->msg->show();
+        this->close();
     }
 
     if( !login_init_conf()){
         emit signal_login_chk_err(ERR_CONF);
-
+        this->msg->show();
+        return;
     }
 
     connect(this->ui->pushButton_login, SIGNAL(clicked()), \
             this,SLOT(slot_login_pbuttonlogin_to_mainwindow()));
-
-    connect(this,SIGNAL(signal_login_chk_err(int)),\
-            msg,SLOT(slot_msgbox_set_code(int)));
-
 }
 
 RmtLogin::~RmtLogin()
@@ -32,43 +35,43 @@ RmtLogin::~RmtLogin()
 
 bool
 RmtLogin::login_init(){
-    this->setWindowTitle("登录界面");
+  this->setWindowTitle("登录界面");
 
-    this->ui->lineEdit_name->setMaxLength(16);
-    this->ui->lineEdit_name->setMaxLength(16);
+  this->ui->lineEdit_name->setMaxLength(16);
+  this->ui->lineEdit_name->setMaxLength(16);
 
-    return true;
+  if ( !this->conf_value->getRmtConfValue()){
+      emit signal_login_chk_err(ERR_CONF_NOTFUND);
+      this->msg->show();
+      qDebug() << "配置文件不存在";
+      return false;
+  }
+
+  return true;
 }
 
 bool
 RmtLogin::login_init_conf(){
+//    qDebug() << "DocumentsLocation: " << QStandardPaths::displayName(QStandardPaths::DocumentsLocation);
+  if ( 0 == (*this->conf_value->db_database).length() ||
+       0 == (*this->conf_value->db_hostname).length() ||
+       0 == (*this->conf_value->db_port).length() ||
+       0 == (*this->conf_value->db_databasename).length() ||
+       0 == (*this->conf_value->db_username).length() ||
+       0 == (*this->conf_value->db_password).length() ){
+      emit signal_login_chk_err(ERR_CONF_ARGERR);
+      this->msg->show();
+      qDebug() << "配置文件错误";
+      return false;
+  }
 
-    //strcpy(conf_file, "C:\\Users\\Public\\rmtconf.ini");
-    //qDebug("%s", conf_file);
+  this->ui->lineEdit_name->setText(*this->conf_value->user_id);
+  this->ui->lineEdit_pwd->setText(*this->conf_value->user_pwd);
+  this->ui->lineEdit_pwd->setEchoMode(QLineEdit::PasswordEchoOnEdit);
 
-    qDebug() << "DocumentsLocation: " << QStandardPaths::displayName(QStandardPaths::DocumentsLocation);
-    //path = new QStandardPaths::QStandardPaths();
-    //QMessageBox::critical(0, QObject::tr("tst"),
-    //QStandardPaths::displayName(QStandardPaths::DocumentsLocation), QMessageBox::Cancel);
+  qDebug() << this->ui->lineEdit_pwd->text();
 
-    QFile file( conf_file );
-    qDebug()<<conf_file;
-    if ( QFile::exists("H:\\") ){
-        emit this->signal_login_chk_err(ERR_CONF_NOTFUND);
-        qDebug() << "RmtConf.ini 不存在";
-    }else{
-        qDebug() << "RmtConf.ini 存在";
-    }
-
-    qDebug() << "RmtConf";
-    /*
-    QString qstrname = RmtConf().GetConf("user","name").toString();
-    qDebug() << qstrname;
-    QString qstrpasswd = RmtConf().GetConf("user","password").toString();
-    qDebug() << qstrpasswd;
-    */
-
-    return true;
+  return true;
 }
 
 bool
@@ -82,17 +85,20 @@ RmtLogin::chk_input(){
 
 bool
 RmtLogin::chk_user_pwd(){
-    QString str_user = this->ui->lineEdit_name->text();
-    QString str_pwd = this->ui->lineEdit_pwd->text();
+  QString str_user = this->ui->lineEdit_name->text();
+  QString str_pwd = this->ui->lineEdit_pwd->text();
 
-    qDebug()<< str_user;
+  qDebug()<< "获取输入"<<str_user;
 
-    //TODO
-    if(str_user.compare("000") || \
-            str_pwd.compare("000")){
-        return false;
-    }
-    return true;
+  DbMysql chk = DbMysql(this->conf_value);
+
+  if( !chk.query_chkuser(str_user,str_pwd)){
+      qDebug()<< "认证失败";
+      return false;
+  }
+
+
+  return true;
 }
 
 /*
@@ -101,21 +107,28 @@ RmtLogin::chk_user_pwd(){
 void
 RmtLogin::slot_login_pbuttonlogin_to_mainwindow ()
 {
-    if(!chk_input()){
-        emit this->signal_login_chk_err(false);
-        this->msg->show();
-        return;
-    }
 
-    if(!chk_user_pwd()){
-        this->ui->lineEdit_pwd->clear();
-        emit this->signal_login_chk_err(2);
+  if(!chk_input()){
+        emit this->signal_login_chk_err(APPERR_INPUT);
         this->msg->show();
         return;
-    }
+  }
+
+  if(!chk_user_pwd()){
+        this->ui->lineEdit_pwd->clear();
+        emit this->signal_login_chk_err(APPERR_LOGIN);
+        this->msg->show();
+        qDebug()<< "认证失败";
+        return;
+  }
+
+    qDebug()<< "登录成功";
+    *conf_value->user_id = this->ui->lineEdit_name->text();
+    *conf_value->user_pwd = this->ui->lineEdit_pwd->text();
+    this->conf_value->setRmtConfValue(conf_value);
 
     RmtMainWindow * rmtmainwindow = new RmtMainWindow();
     rmtmainwindow->show();
     this->close();
-    //return rmtmainwindow.exec();
+
 }

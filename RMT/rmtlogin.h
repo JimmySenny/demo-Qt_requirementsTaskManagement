@@ -2,17 +2,16 @@
 #define RMTLOGIN_H
 
 #include <QMainWindow>
-<<<<<<< HEAD
-#include <QFile>
-#include <QString>
-
-#include "rmt.h"
-#include "rmtmainwindow.h"
-#include "rmtmessagebox.h"
-=======
 
 #include "rmtcomm.h"
->>>>>>> d941d8facdd3209bfd7c19b9dba421f9731fc621
+
+#include "rmtsyspara.h"
+#include "rmtbusipara.h"
+
+#include "rmtmessagebox.h"
+#include "rmtconf.h"
+#include "dbmysql.h"
+#include "rmtmainwindow.h"
 
 namespace Ui {
 class RmtLogin;
@@ -42,8 +41,7 @@ public:
 private:
     Ui::RmtLogin *ui;
     RmtMessageBox * msg;
-
-
+    RmtConfValue * conf_value;
 };
 
 #endif // RMTLOGIN_H

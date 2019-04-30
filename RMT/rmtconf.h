@@ -3,21 +3,43 @@
 
 #include <QVariant>
 #include <QSettings>
-#include <QString>
 
 #include "rmtcomm.h"
 
-class RmtConf
+class RmtConfFunc
 {
 public:
-    RmtConf();
-    RmtConf(QString qstr_confm);
-    virtual ~RmtConf(void);
-    void SetConf(QString,QString,QVariant);
+    RmtConfFunc();
+    RmtConfFunc(QString qstr_confm);
+    virtual ~RmtConfFunc(void);
+    bool initConf(QString);
     QVariant GetConf(QString,QString);
+    void SetConf(QString,QString,QVariant);
 private:
-    QString qstr_conf_file;
+    QString  rmtconf_file;
     QSettings * qsetting;
 };
+
+class RmtConfValue{
+public:
+
+  QString *user_id;
+  QString *user_pwd;
+  QString *db_database;
+  QString *db_hostname;
+  QString *db_port;
+  QString *db_databasename;
+  QString *db_username;
+  QString *db_password;
+
+  RmtConfValue();
+  ~RmtConfValue();
+  bool getRmtConfValue();
+  void setRmtConfValue(RmtConfValue *);
+  RmtConfFunc * conf;
+  QString * conf_file;
+};
+
+
 
 #endif // RMTCONF_H

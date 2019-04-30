@@ -13,9 +13,7 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-<<<<<<< HEAD
   <widget class="QWidget" name="centralwidget"/>
-=======
   <widget class="QWidget" name="centralwidget">
    <widget class="QListWidget" name="listWidget">
     <property name="geometry">
@@ -31,7 +29,6 @@
     </property>
    </widget>
   </widget>
->>>>>>> d941d8facdd3209bfd7c19b9dba421f9731fc621
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>

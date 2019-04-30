@@ -26,9 +26,9 @@ CONFIG += console c++11
 #QMAKE_CXXFLAGS += -std=c++11
 
 SOURCES += \
-        main.cpp \
+    main.cpp \
     rmtconf.cpp \
-        rmtlogin.cpp \
+    rmtlogin.cpp \
     rmtmainwindow.cpp \
     rmtmessagebox.cpp \
     singletonuser.cpp \
@@ -37,17 +37,13 @@ SOURCES += \
 HEADERS += \
     rmtcomm.h \
     rmtconf.h \
-        rmtlogin.h \
+    rmtlogin.h \
     rmtmainwindow.h \
     rmtmessagebox.h \
-<<<<<<< HEAD
-    rmt.h
-=======
     rmtsyspara.h \
     singletonuser.h \
     rmtbusipara.h \
     dbmysql.h
->>>>>>> d941d8facdd3209bfd7c19b9dba421f9731fc621
 
 FORMS += \
         rmtlogin.ui \
