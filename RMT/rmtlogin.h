@@ -42,6 +42,7 @@ private:
     Ui::RmtLogin *ui;
     RmtMessageBox * msg;
     RmtConfValue * conf_value;
+    DbMysql * chk;
 };
 
 #endif // RMTLOGIN_H

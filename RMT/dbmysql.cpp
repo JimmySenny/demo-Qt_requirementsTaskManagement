@@ -62,18 +62,21 @@ DbMysql::query_chkuser(QString id, QString pwd ){
   if(!this->db_open()){
       return false;
   }
-  QString chkuser = QString("select * from rmt_user where user_id='"+id+"' and user_pwd='"+pwd);
-  qDebug() << chkuser;
-//  query.exec(chkuser);
-  this->query =  QSqlQuery( chkuser );
+    //QString chkuser = QString("select * from rmt_user where user_id='"+id+"' and user_pwd='"+pwd);
+    //QString chkuser = QString("select * from rmt_user ");
+    //qDebug() << chkuser;
+    //  query.exec(chkuser);
+    //this->query =  QSqlQuery( chkuser );
+    //QSqlRecord rec = query.record();
+    //QSqlRecord rec = query.isSelect();
+    //qDebug() << "query:" << query.isSelect();
 
-  QSqlRecord rec = query.record();
-  qDebug() << "Number of columns: " << rec.count();
+    this->query = QSqlQuery(QString("select * from rmt_user where user_id=%1 and user_pwd=%2").arg(id).arg(pwd));
 
-  if(0 == rec.count()){
-      return false;
-  }
+     if(!query.next()){
+         return false;
+    }
 
-  this->db_close();
-  return true;
+     this->db_close();
+     return true;
 }

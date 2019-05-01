@@ -24,6 +24,8 @@ RmtLogin::RmtLogin(QWidget *parent) :
         return;
     }
 
+    chk = new DbMysql(this->conf_value);
+
     connect(this->ui->pushButton_login, SIGNAL(clicked()), \
             this,SLOT(slot_login_pbuttonlogin_to_mainwindow()));
 }
@@ -88,15 +90,10 @@ RmtLogin::chk_user_pwd(){
   QString str_user = this->ui->lineEdit_name->text();
   QString str_pwd = this->ui->lineEdit_pwd->text();
 
-  qDebug()<< "获取输入"<<str_user;
-
-  DbMysql chk = DbMysql(this->conf_value);
-
-  if( !chk.query_chkuser(str_user,str_pwd)){
+  if( !chk->query_chkuser(str_user,str_pwd)){
       qDebug()<< "认证失败";
       return false;
   }
-
 
   return true;
 }
@@ -115,10 +112,11 @@ RmtLogin::slot_login_pbuttonlogin_to_mainwindow ()
   }
 
   if(!chk_user_pwd()){
-        this->ui->lineEdit_pwd->clear();
+      this->ui->lineEdit_pwd->clear();
+      this->ui->lineEdit_pwd->setEchoMode(QLineEdit::PasswordEchoOnEdit);
         emit this->signal_login_chk_err(APPERR_LOGIN);
         this->msg->show();
-        qDebug()<< "认证失败";
+        qDebug()<< "chk_user_pwd()";
         return;
   }
 
@@ -130,5 +128,4 @@ RmtLogin::slot_login_pbuttonlogin_to_mainwindow ()
     RmtMainWindow * rmtmainwindow = new RmtMainWindow();
     rmtmainwindow->show();
     this->close();
-
 }
