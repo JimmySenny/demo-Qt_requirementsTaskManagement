@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>878</width>
-    <height>625</height>
+    <width>874</width>
+    <height>622</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,7 +26,7 @@
      <height>480</height>
     </size>
    </property>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>1</x>
@@ -106,24 +106,21 @@
      </item>
      <item>
       <widget class="QTabWidget" name="tabWidget">
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <property name="documentMode">
+        <bool>false</bool>
+       </property>
+       <property name="tabsClosable">
+        <bool>true</bool>
+       </property>
+       <property name="movable">
+        <bool>true</bool>
+       </property>
        <widget class="RmtmwHomePage" name="tab">
         <attribute name="title">
          <string>首页</string>
-        </attribute>
-       </widget>
-       <widget class="RmtmwFirstForm" name="tab_1">
-        <attribute name="title">
-         <string>R</string>
-        </attribute>
-       </widget>
-       <widget class="RmtmwSecondForm" name="tab_2">
-        <attribute name="title">
-         <string>T</string>
-        </attribute>
-       </widget>
-       <widget class="RmtmwThirdForm" name="tab_3">
-        <attribute name="title">
-         <string>M</string>
         </attribute>
        </widget>
       </widget>
@@ -136,58 +133,18 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>878</width>
-     <height>23</height>
+     <width>874</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="action">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="checked">
-    <bool>true</bool>
-   </property>
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>需求管理</string>
-   </property>
-  </action>
-  <action name="action_2">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>任务管理</string>
-   </property>
-  </action>
  </widget>
  <customwidgets>
   <customwidget>
    <class>RmtmwHomePage</class>
    <extends>QWidget</extends>
    <header>rmtmwhomepage.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>RmtmwFirstForm</class>
-   <extends>QWidget</extends>
-   <header>rmtmwfirstform.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>RmtmwSecondForm</class>
-   <extends>QWidget</extends>
-   <header>rmtmwsecondform.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>RmtmwThirdForm</class>
-   <extends>QWidget</extends>
-   <header location="global">rmtmwthirdform.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
