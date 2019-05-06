@@ -6,56 +6,92 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>640</width>
-    <height>480</height>
+    <width>850</width>
+    <height>605</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QStackedWidget" name="stackedWidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>480</height>
+    </size>
+   </property>
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>20</y>
-      <width>401</width>
-      <height>161</height>
+      <x>10</x>
+      <y>10</y>
+      <width>864</width>
+      <height>482</height>
      </rect>
     </property>
-    <property name="currentIndex">
-     <number>1</number>
-    </property>
-    <widget class="QWidget" name="page"/>
-    <widget class="QWidget" name="page_2"/>
-   </widget>
-   <widget class="QTreeWidget" name="treeWidget">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>131</width>
-      <height>192</height>
-     </rect>
-    </property>
-    <column>
-     <property name="text">
-      <string notr="true">1</string>
-     </property>
-    </column>
-   </widget>
-   <widget class="QListWidget" name="listWidget">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>200</y>
-      <width>131</width>
-      <height>151</height>
-     </rect>
-    </property>
-    <property name="currentRow">
-     <number>-1</number>
-    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,8">
+     <item>
+      <widget class="QTreeWidget" name="treeWidget">
+       <column>
+        <property name="text">
+         <string>导航</string>
+        </property>
+       </column>
+       <item>
+        <property name="text">
+         <string>subtree1</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>subtree1-1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>subtree1-2</string>
+         </property>
+        </item>
+       </item>
+       <item>
+        <property name="text">
+         <string>subtree2</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>subtree2-1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>subtree2-2</string>
+         </property>
+        </item>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QStackedWidget" name="stackedWidget">
+       <property name="minimumSize">
+        <size>
+         <width>600</width>
+         <height>480</height>
+        </size>
+       </property>
+       <property name="currentIndex">
+        <number>2</number>
+       </property>
+       <widget class="RmtmwHomePage" name="page_0"/>
+       <widget class="RmtmwFirstForm" name="page_1"/>
+       <widget class="RmtmwSecondForm" name="page_2"/>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -63,7 +99,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>640</width>
+     <width>850</width>
      <height>23</height>
     </rect>
    </property>
@@ -92,6 +128,26 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>RmtmwHomePage</class>
+   <extends>QWidget</extends>
+   <header>rmtmwhomepage.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>RmtmwFirstForm</class>
+   <extends>QWidget</extends>
+   <header>rmtmwfirstform.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>RmtmwSecondForm</class>
+   <extends>QWidget</extends>
+   <header location="global">rmtmwsecondform.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

@@ -7,6 +7,9 @@ RmtMainWindow::RmtMainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     rmw_init();
+    /* connect(this->ui->treeWidget,SIGNAL(itemClicked(QTreeWidgetItem*,int)),\ */
+    connect(this->ui->treeWidget,SIGNAL(itemChanged(QTreeWidgetItem*,int)),\
+            this,SLOT(on_treeWidget_itemClicked(QTreeWidgetItem*,int)));
 }
 
 RmtMainWindow::~RmtMainWindow()
@@ -17,11 +20,48 @@ RmtMainWindow::~RmtMainWindow()
 //QListWidget QTreeWidget
 //QStackedWidget QTabWidget
 
+void
+RmtMainWindow::rmw_switchForm(int idx ){
+
+    this->ui->stackedWidget->setCurrentIndex( idx );
+    qDebug() << this->ui->stackedWidget->currentWidget();
+}
+
 bool
 RmtMainWindow::rmw_init(){
-    this->label_1 = new QLabel("a");
-    //this->lable_1 = new QLable("b");
-    this->ui->listWidget->addItem("this->label_1");
-    //this->ui->listWidget->addItem(this->lable_2);
+    this->phomepage = new RmtmwHomePage(this);
+    this->pfirstform = new RmtmwFirstForm(this);
+    this->psecondform = new RmtmwSecondForm(this);
+
+    this->ui->stackedWidget->addWidget(phomepage);
+    this->ui->stackedWidget->addWidget(pfirstform);
+    this->ui->stackedWidget->addWidget(psecondform);
+
+    this->ui->stackedWidget->setCurrentWidget(phomepage);
+
     return true;
 }
+
+void
+RmtMainWindow::on_treeWidget_itemClicked(QTreeWidgetItem *item, int column){
+    qDebug() << item->text(0) << "column:"<< column ;
+    //QString itemText=item->text(0);//获取选中的名字
+    //qDebug("SelectName = %s",qPrintable(itemText));
+
+    qDebug() << item->text(0) << item->textAlignment(0);
+    //item->setText(0, "test");
+    if (!QString::compare ( item->text(0),"subtree1",Qt::CaseInsensitive) ) {
+        qDebug() << "switch first";
+        rmw_switchForm(1);
+        //this->ui->stackedWidget->setCurrentWidget(pfirstform);
+    }else if (!QString::compare( item->text(0), "subtree2",Qt::CaseInsensitive)){
+        qDebug() << "switch second";
+        rmw_switchForm(2);
+        //this->ui->stackedWidget->setCurrentWidget(psecondform);
+    }else {
+        qDebug() << "switch homepage";
+        rmw_switchForm(0);
+        //this->ui->stackedWidget->setCurrentWidget(phomepage);
+    }
+}
+

@@ -31,6 +31,9 @@ SOURCES += \
     rmtlogin.cpp \
     rmtmainwindow.cpp \
     rmtmessagebox.cpp \
+    rmtmwfirstform.cpp \
+    rmtmwhomepage.cpp \
+    rmtmwsecondform.cpp \
     singletonuser.cpp \
     dbmysql.cpp
 
@@ -40,6 +43,9 @@ HEADERS += \
     rmtlogin.h \
     rmtmainwindow.h \
     rmtmessagebox.h \
+    rmtmwfirstform.h \
+    rmtmwhomepage.h \
+    rmtmwsecondform.h \
     rmtsyspara.h \
     singletonuser.h \
     rmtbusipara.h \
@@ -48,7 +54,10 @@ HEADERS += \
 FORMS += \
         rmtlogin.ui \
     rmtmainwindow.ui \
-    rmtmessagebox.ui
+    rmtmessagebox.ui \
+    rmtmwfirstform.ui \
+    rmtmwhomepage.ui \
+    rmtmwsecondform.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
