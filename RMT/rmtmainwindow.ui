@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>850</width>
-    <height>605</height>
+    <width>878</width>
+    <height>625</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,69 +26,106 @@
      <height>480</height>
     </size>
    </property>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>864</width>
-      <height>482</height>
+      <x>1</x>
+      <y>0</y>
+      <width>871</width>
+      <height>581</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,8">
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,7">
      <item>
       <widget class="QTreeWidget" name="treeWidget">
        <column>
         <property name="text">
          <string>导航</string>
         </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="textAlignment">
+         <set>AlignCenter</set>
+        </property>
        </column>
        <item>
         <property name="text">
-         <string>subtree1</string>
+         <string>0</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>R</string>
         </property>
         <item>
          <property name="text">
-          <string>subtree1-1</string>
+          <string>R1</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>subtree1-2</string>
+          <string>R2</string>
          </property>
         </item>
        </item>
        <item>
         <property name="text">
-         <string>subtree2</string>
+         <string>T</string>
         </property>
         <item>
          <property name="text">
-          <string>subtree2-1</string>
+          <string>T1</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>subtree2-2</string>
+          <string>T2</string>
+         </property>
+        </item>
+       </item>
+       <item>
+        <property name="text">
+         <string>M</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>M1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>M2</string>
          </property>
         </item>
        </item>
       </widget>
      </item>
      <item>
-      <widget class="QStackedWidget" name="stackedWidget">
-       <property name="minimumSize">
-        <size>
-         <width>600</width>
-         <height>480</height>
-        </size>
-       </property>
-       <property name="currentIndex">
-        <number>2</number>
-       </property>
-       <widget class="RmtmwHomePage" name="page_0"/>
-       <widget class="RmtmwFirstForm" name="page_1"/>
-       <widget class="RmtmwSecondForm" name="page_2"/>
+      <widget class="QTabWidget" name="tabWidget">
+       <widget class="RmtmwHomePage" name="tab">
+        <attribute name="title">
+         <string>首页</string>
+        </attribute>
+       </widget>
+       <widget class="RmtmwFirstForm" name="tab_1">
+        <attribute name="title">
+         <string>R</string>
+        </attribute>
+       </widget>
+       <widget class="RmtmwSecondForm" name="tab_2">
+        <attribute name="title">
+         <string>T</string>
+        </attribute>
+       </widget>
+       <widget class="RmtmwThirdForm" name="tab_3">
+        <attribute name="title">
+         <string>M</string>
+        </attribute>
+       </widget>
       </widget>
      </item>
     </layout>
@@ -99,7 +136,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>850</width>
+     <width>878</width>
      <height>23</height>
     </rect>
    </property>
@@ -144,7 +181,13 @@
   <customwidget>
    <class>RmtmwSecondForm</class>
    <extends>QWidget</extends>
-   <header location="global">rmtmwsecondform.h</header>
+   <header>rmtmwsecondform.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>RmtmwThirdForm</class>
+   <extends>QWidget</extends>
+   <header location="global">rmtmwthirdform.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

@@ -8,7 +8,7 @@
 #include "rmtmwhomepage.h"
 #include "rmtmwfirstform.h"
 #include "rmtmwsecondform.h"
-
+#include "rmtmwthirdform.h"
 
 namespace Ui {
 class RmtMainWindow;
@@ -34,6 +34,7 @@ private:
     RmtmwHomePage * phomepage;
     RmtmwFirstForm * pfirstform;
     RmtmwSecondForm * psecondform;
+    RmtmwThirdForm * pthirdform;
 
 };
 
