@@ -7,6 +7,8 @@
 #include <QtCore/QtCore>
 #include <QMessageBox>
 
+#include <QLabel>
+
 #include <QFile>
 #include <QFileInfo>
 #include <QStandardPaths>

@@ -2,9 +2,7 @@
 
 #include "rmt.h"
 #include "rmtlogin.h"
-#include "rmtmainwindow.h"
 #include "rmtcomm.h"
-
 
 int main(int argc, char *argv[])
 {
