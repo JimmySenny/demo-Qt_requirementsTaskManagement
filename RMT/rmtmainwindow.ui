@@ -63,6 +63,11 @@
         </property>
         <item>
          <property name="text">
+          <string>R0</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
           <string>R1</string>
          </property>
         </item>

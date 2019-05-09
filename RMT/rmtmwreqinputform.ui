@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>RmtmwReqInputForm</class>
+ <widget class="QWidget" name="RmtmwReqInputForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>469</width>
+    <height>491</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>452</width>
+     <height>471</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="7" column="0" colspan="2">
+     <widget class="QLabel" name="label_name">
+      <property name="text">
+       <string>name</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_busiop">
+      <property name="text">
+       <string>busiop</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1" colspan="2">
+     <widget class="QLineEdit" name="lineEdit_busiop"/>
+    </item>
+    <item row="5" column="3">
+     <widget class="QLabel" name="label_level">
+      <property name="text">
+       <string>level</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1" colspan="2">
+     <widget class="QComboBox" name="comboBox_dpm"/>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="label_busi">
+      <property name="text">
+       <string>busi</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="5">
+     <widget class="QDateEdit" name="dateEdit_inputdt"/>
+    </item>
+    <item row="6" column="1" colspan="2">
+     <widget class="QComboBox" name="comboBox_type"/>
+    </item>
+    <item row="1" column="3">
+     <widget class="QLabel" name="label_expectdt">
+      <property name="text">
+       <string>expectdt</string>
+      </property>
+     </widget>
+    </item>
+    <item row="16" column="0" colspan="2">
+     <widget class="QLabel" name="label_no">
+      <property name="text">
+       <string>no</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_dpm">
+      <property name="text">
+       <string>dpm</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1" colspan="2">
+     <widget class="QLineEdit" name="lineEdit_reqno"/>
+    </item>
+    <item row="1" column="5">
+     <widget class="QDateEdit" name="dateEdit_expectdt"/>
+    </item>
+    <item row="5" column="5">
+     <widget class="QComboBox" name="comboBox_level"/>
+    </item>
+    <item row="4" column="3" colspan="2">
+     <widget class="QLabel" name="label_busioptel">
+      <property name="text">
+       <string>busioptel</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="3">
+     <widget class="QLabel" name="label_attr">
+      <property name="text">
+       <string>attr</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1" colspan="2">
+     <widget class="QComboBox" name="comboBox_busi"/>
+    </item>
+    <item row="6" column="5">
+     <widget class="QComboBox" name="comboBox_attr"/>
+    </item>
+    <item row="9" column="0">
+     <widget class="QLabel" name="label_desc">
+      <property name="text">
+       <string>desc</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="3">
+     <widget class="QLabel" name="label_inputdt">
+      <property name="text">
+       <string>inputdt</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_reqno">
+      <property name="text">
+       <string>reqno</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="5">
+     <widget class="QLineEdit" name="lineEdit_busioptel"/>
+    </item>
+    <item row="16" column="2">
+     <widget class="QLineEdit" name="lineEdit"/>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="label_type">
+      <property name="text">
+       <string>type</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="0" colspan="6">
+     <widget class="QLineEdit" name="lineEdit_name"/>
+    </item>
+    <item row="12" column="0" colspan="6">
+     <widget class="QTextEdit" name="textEdit_desc"/>
+    </item>
+    <item row="13" column="3">
+     <widget class="QPushButton" name="pushButton_commit">
+      <property name="text">
+       <string>commit</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

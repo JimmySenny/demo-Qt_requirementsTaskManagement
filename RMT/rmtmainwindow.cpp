@@ -24,7 +24,7 @@ RmtMainWindow::~RmtMainWindow()
 
 void
 RmtMainWindow::rmw_switchForm(QWidget * p_page ){
-    qDebug() << idx;
+    qDebug() << p_page;
     //this->ui->stackedWidget->setCurrentIndex( idx );
     //qDebug() << this->ui->stackedWidget->currentWidget();
 
@@ -34,10 +34,8 @@ RmtMainWindow::rmw_switchForm(QWidget * p_page ){
 bool
 RmtMainWindow::rmw_init(){
     this->phomepage = this->ui->tab;
-    this->pfirstform = new RmtmwFirstForm(this->ui->tabWidget);
-    this->psecondform = new RmtmwSecondForm(this->ui->tabWidget);
-    this->pthirdform = new RmtmwThirdForm(this->ui->tabWidget);
-
+    this->preqselectform = new RmtmwReqSelectForm(this->ui->tabWidget);
+    this->preqinputform = new RmtmwReqInputForm(this->ui->tabWidget);
     //this->ui->page_0->show();
 
     //this->ui->stackedWidget->addWidget(pfirstform);
@@ -46,9 +44,8 @@ RmtMainWindow::rmw_init(){
     //this->ui->stackedWidget->setCurrentWidget(phomepage);
 
     this->ui->tabWidget->setCurrentIndex(0);
-    this->pfirstform->hide();
-    this->psecondform->hide();
-    this->pthirdform->hide();
+    this->preqselectform->hide();
+    this->preqinputform->hide();
 
     return true;
 }
@@ -61,26 +58,22 @@ RmtMainWindow::on_treeWidget_itemClicked(QTreeWidgetItem *item, int column){
         qDebug() << "switch home";
         rmw_switchForm(0);
         //this->ui->stackedWidget->setCurrentWidget(pfirstform);
-    } else if (!QString::compare ( item->text(0),"R",Qt::CaseInsensitive) ) {
-        qDebug() << "switch first";
-        if ( this->ui->tabWidget->indexOf(pfirstform) < 0 ) {
-            this->ui->tabWidget->insertTab(1,pfirstform,"RRR");
+    } else if (!QString::compare ( item->text(0),"R0",Qt::CaseInsensitive) ) {
+        qDebug() << "switch zero";
+        if ( this->ui->tabWidget->indexOf(preqselectform) < 0 ) {
+            this->ui->tabWidget->insertTab(1,preqselectform,"R0");
             //this->ui->tabWidget->addTab(psecondform,"RRRR");
         }
-        qDebug() << this->ui->tabWidget->indexOf(pfirstform);
-        rmw_switchForm(pfirstform);
-    }else if (!QString::compare( item->text(0), "T",Qt::CaseInsensitive)){
-        qDebug() << "switch second";
-
-        this->ui->tabWidget->insertTab(2,psecondform,"TTT");
-        //this->ui->tabWidget->addTab(psecondform,"TTTT");
-        //this->ui->tabWidget->setCurrentWidget(psecondform);
-        rmw_switchForm(psecondform);
-    }else if (!QString::compare( item->text(0), "M",Qt::CaseInsensitive)){
-        qDebug() << "switch third";
-
-        this->ui->tabWidget->insertTab(3,pthirdform,"MMM");
-        rmw_switchForm(pthirdform);
+        qDebug() << this->ui->tabWidget->indexOf(preqinputform);
+        rmw_switchForm(preqselectform);
+    } else if (!QString::compare ( item->text(0),"R1",Qt::CaseInsensitive) ) {
+        qDebug() << "switch first";
+        if ( this->ui->tabWidget->indexOf(preqinputform) < 0 ) {
+            this->ui->tabWidget->insertTab(2,preqinputform,"R1");
+            //this->ui->tabWidget->addTab(psecondform,"RRRR");
+        }
+        qDebug() << this->ui->tabWidget->indexOf(preqinputform);
+        rmw_switchForm(preqinputform);
     }else {
         qDebug() << "switch homepage";
         rmw_switchForm(phomepage);

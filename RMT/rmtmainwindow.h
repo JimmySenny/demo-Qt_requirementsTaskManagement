@@ -6,9 +6,8 @@
 #include "rmtcomm.h"
 
 #include "rmtmwhomepage.h"
-#include "rmtmwfirstform.h"
-#include "rmtmwsecondform.h"
-#include "rmtmwthirdform.h"
+#include "rmtmwreqselectform.h"
+#include "rmtmwreqinputform.h"
 
 namespace Ui {
 class RmtMainWindow;
@@ -36,9 +35,8 @@ private:
     Ui::RmtMainWindow *ui;
 
     RmtmwHomePage * phomepage;
-    RmtmwFirstForm * pfirstform;
-    RmtmwSecondForm * psecondform;
-    RmtmwThirdForm * pthirdform;
+    RmtmwReqSelectForm * preqselectform;
+    RmtmwReqInputForm * preqinputform;
 
 };
 

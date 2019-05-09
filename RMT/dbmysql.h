@@ -20,6 +20,7 @@ public:
     bool db_rollback();
     void db_close();
     bool query_chkuser(QString, QString);
+    bool query_reqinput(QString, QString,QString);
 
 private:
     DbMysql();

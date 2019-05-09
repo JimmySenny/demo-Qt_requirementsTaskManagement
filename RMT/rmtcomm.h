@@ -12,6 +12,7 @@
 #include <QStackedWidget>
 
 #include <QLabel>
+#include <QDate>
 
 #include <QFile>
 #include <QFileInfo>
