@@ -29,23 +29,4 @@ private:
 
 };
 
-/*
-create table rmt_user(
-user_id char(12) not null,
-user_name varchar(128),
-user_pwd char(16) not null,
-user_level int(1) not null,
-department_id int(3) not null,
-team_id int(3)
-);
-
-create table rmt_map(
-map_type char(2) not null,
-map_stat char(2) not null,
-map_id int(3) not null,
-map_name varchar(512) not null
-);
-
-*/
-
 #endif // SINGLETONUSER_H

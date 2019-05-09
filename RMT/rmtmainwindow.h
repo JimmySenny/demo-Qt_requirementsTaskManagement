@@ -27,7 +27,7 @@ public:
     explicit RmtMainWindow(QWidget *parent = nullptr);
     ~RmtMainWindow();
     bool rmw_init();
-    void rmw_switchForm(int index);
+    void rmw_switchForm(QWidget *);
 
 private slots:
 

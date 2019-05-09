@@ -25,6 +25,7 @@ private:
     DbMysql();
     QSqlDatabase db;
     QSqlQuery query;
+    static DbMysql dbsql;
 };
 
 #endif // DBMYSQL_H

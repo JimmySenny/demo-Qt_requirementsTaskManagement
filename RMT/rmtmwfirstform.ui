@@ -6,24 +6,80 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>320</width>
-    <height>240</height>
+    <width>634</width>
+    <height>464</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="label_type">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>100</y>
+     <x>50</x>
+     <y>70</y>
      <width>54</width>
      <height>12</height>
     </rect>
    </property>
    <property name="text">
-    <string>first</string>
+    <string>type</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>70</y>
+     <width>72</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_attr">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>30</y>
+     <width>54</width>
+     <height>12</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>attr</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_attr">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>30</y>
+     <width>72</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_dpm">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>20</y>
+     <width>54</width>
+     <height>12</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>dpm</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_dpm">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>20</y>
+     <width>72</width>
+     <height>22</height>
+    </rect>
    </property>
   </widget>
  </widget>
