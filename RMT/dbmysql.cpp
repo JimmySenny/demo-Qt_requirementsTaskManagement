@@ -1,35 +1,65 @@
 #include "dbmysql.h"
 
-DbMysql::DbMysql(){
+static int dbcount = 0;
 
+DbMysql::DbMysql(){
+    qDebug() << "DbMysql cons";
+    dbcount++;
+    //this->db = QSqlDatabase::database();
+    this->instance = this;
 }
 
-DbMysql::DbMysql(RmtConfValue *conf_value)
+DbMysql::~DbMysql(){
+    delete this;
+    qDebug() << "~DbMysql()";
+}
+
+DbMysql* DbMysql::instance = new DbMysql();
+
+DbMysql*
+DbMysql::getInstance(){
+    qDebug() << "getInstance()" << instance << dbcount;
+    if ( dbcount < 1 ){
+        DbMysql();
+    }
+    return instance;
+}
+
+bool
+DbMysql::db_init(RmtConfValue *conf_value)
 {
-  qDebug() << "DbMysql(RmtConfValue *)"<<*conf_value->db_database;
-  this->db =  QSqlDatabase::addDatabase( *conf_value->db_database);
+  qDebug() << "DbMysql(RmtConfValue *)"<<*conf_value->db_database << *conf_value->db_username;
+  this->db.addDatabase(*conf_value->db_database);
+  qDebug() << this->db.isValid();
   //建立连接    数据TODO
   //QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
   //db.setHostName("localhost");
   this->db.setHostName(*conf_value->db_hostname);
   this->db.setPort((*conf_value->db_port).toInt());
-  this->db.setDatabaseName(*conf_value->db_databasename);       //这里输入� 的数据库名
+  this->db.setDatabaseName(*conf_value->db_databasename);
   //db.setDatabaseName("mysql_odbc");
   this->db.setUserName(*conf_value->db_username);
-  this->db.setPassword(*conf_value->db_password);   //这里输入� 的密� �
-  this->query = QSqlQuery(this->db);
+  this->db.setPassword(*conf_value->db_password);
+  //this->query = QSqlQuery(this->db);
+  if( !this->db.open() ){
+    qDebug() << db.lastError();
+  }
+  qDebug( "pdb[%p]", &db );
+  return true;
 }
 
 bool
 DbMysql::db_open()
 {
-  if (!db.open()) {
-//       QMessageBox::critical(0, QObject::tr("� 法打开数据库"),
-//      "� 法创建数据库连接！ ", QMessageBox::Cancel);
+    qDebug( "pdb[%p]", &db );
+  if ( !db.open()) {
+      qDebug() << db.lastError();
+       QMessageBox::critical(0, QObject::tr("db_open fail"),
+      "db_open fail", QMessageBox::Cancel);
         return false;
   } else {
-//       QMessageBox::critical(0, QObject::tr("打开数据库成功"),
-//        "成功创建数据库连接！ ", QMessageBox::Cancel);
+//       QMessageBox::critical(0, QObject::tr("db_open succ"),
+//        "", QMessageBox::Cancel);
   }
 
     return true;
@@ -56,12 +86,19 @@ DbMysql::db_close(){
   return db.close();
 }
 
+void
+DbMysql::db_test(){
+    qDebug() << "db_test():" << dbcount;
+}
+
+
 bool
 DbMysql::query_chkuser(QString id, QString pwd ){
 
   if(!this->db_open()){
       return false;
   }
+    qDebug() << "query_chkuser:" << __LINE__ << id << pwd;
     //QString chkuser = QString("select * from tb_rmt_user where user_id='"+id+"' and user_pwd='"+pwd);
     //QString chkuser = QString("select * from rmt_user ");
     //qDebug() << chkuser;
@@ -70,7 +107,6 @@ DbMysql::query_chkuser(QString id, QString pwd ){
     //QSqlRecord rec = query.record();
     //QSqlRecord rec = query.isSelect();
     //qDebug() << "query:" << query.isSelect();
-
     this->query = QSqlQuery(QString("select * from tb_rmt_user where user_id=%1 and user_pwd=%2").arg(id).arg(pwd));
 
      if(!query.next()){

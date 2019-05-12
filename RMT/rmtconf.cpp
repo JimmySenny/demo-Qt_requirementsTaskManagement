@@ -60,7 +60,7 @@ RmtConfValue::getRmtConfValue(){
       qDebug() << "RmtConfValue配置文件不存在";
       return false;
   }
-  this->conf = new RmtConfFunc(QCoreApplication::applicationDirPath()+"/rmtconf.ini");
+  this->conf = new RmtConfFunc(QCoreApplication::applicationDirPath()+"/RmtConf.ini");
 
   this->user_id = new QString ( this->conf->GetConf("USER","user_id").toString());
   this->user_pwd = new QString ( this->conf->GetConf("USER","user_pwd").toString());

@@ -6,8 +6,9 @@ RmtLogin::RmtLogin(QWidget *parent) :
     ui(new Ui::RmtLogin)
 {
     ui->setupUi(this);    
-    conf_value = new RmtConfValue();
-    msg = new RmtMessageBox();
+    this->conf_value = new RmtConfValue();
+    this->dbmysql = DbMysql::getInstance();
+    this->msg = new RmtMessageBox();
     connect(this,SIGNAL(signal_login_chk_err(int)),\
             msg,SLOT(slot_msgbox_set_code(int)));
 
@@ -21,10 +22,11 @@ RmtLogin::RmtLogin(QWidget *parent) :
     if( !login_init_conf()){
         emit signal_login_chk_err(ERR_CONF);
         this->msg->show();
+        this->close();
         return;
     }
 
-    chk = new DbMysql(this->conf_value);
+
 
     connect(this->ui->pushButton_login, SIGNAL(clicked()), \
             this,SLOT(slot_login_pbuttonlogin_to_mainwindow()));
@@ -66,6 +68,15 @@ RmtLogin::login_init_conf(){
       qDebug() << "配置文件错误";
       return false;
   }
+  qDebug() << "init" << this->dbmysql->db_init(this->conf_value);
+  qDebug() << "open" << this->dbmysql->db_open();
+  /*
+  if ( !this->dbmysql->db_init(this->conf_value) ){
+      emit signal_login_chk_err(ERR_DBINIT);
+      this->msg->show();
+      qDebug() << "数据库连接初始化错误";
+      return  false;
+  }*/
 
   this->ui->lineEdit_name->setText(*this->conf_value->user_id);
   this->ui->lineEdit_pwd->setText(*this->conf_value->user_pwd);
@@ -90,7 +101,9 @@ RmtLogin::chk_user_pwd(){
   QString str_user = this->ui->lineEdit_name->text();
   QString str_pwd = this->ui->lineEdit_pwd->text();
 
-  if( !chk->query_chkuser(str_user,str_pwd)){
+  qDebug() << "chk_user_pwd()" << str_user << str_pwd;
+
+  if( !dbmysql->query_chkuser(str_user,str_pwd)){
       qDebug()<< "认证失败";
       return false;
   }

@@ -3,6 +3,7 @@
 
 
 #include <QSqlDatabase>
+#include <QSqlError>
 #include <QSqlQuery>
 #include <QSqlRecord>
 
@@ -13,20 +14,23 @@ class DbMysql
 {
 
 public:
+    static DbMysql* getInstance();
 
-    DbMysql(RmtConfValue *);
+    bool db_init(RmtConfValue *);
     bool db_open();
     bool db_commit();
     bool db_rollback();
     void db_close();
+    void db_test();
     bool query_chkuser(QString, QString);
     bool query_reqinput(QString, QString,QString);
 
 private:
     DbMysql();
+    ~DbMysql();
+    static DbMysql* instance;
     QSqlDatabase db;
     QSqlQuery query;
-    static DbMysql dbsql;
 };
 
 #endif // DBMYSQL_H
