@@ -15,6 +15,7 @@
 #define ERR_CONF            1012
 
 #define ERR_DB              2000
+#define ERR_DBINIT          2001
 
 #define APPERR              3000
 #define APPERR_INPUT        3001
