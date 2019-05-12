@@ -3,6 +3,7 @@
 #include "rmt.h"
 #include "rmtlogin.h"
 #include "rmtcomm.h"
+#include "rmtconf.h"
 #include "dbmysql.h"
 
 int main(int argc, char *argv[])
@@ -13,12 +14,18 @@ int main(int argc, char *argv[])
 #endif
     QApplication a(argc, argv);
 
+    /*
     qDebug()<<"Available drivers:";
     QStringList drivers=QSqlDatabase::drivers();
     foreach(QString driver,drivers);
-    qDebug()<<drivers;
+    */
+    qDebug()<<QSqlDatabase::drivers();
 
-    DbMysql * dbmysql = DbMysql::getInstance();
+    RmtConfValue * conf_value = new RmtConfValue();
+    if( !conf_value->getRmtConfValue() ){
+        return -1;
+    }
+    DbMysql *pdb = new DbMysql(conf_value);
 
     RmtLogin w;
     w.show();

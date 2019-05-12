@@ -6,7 +6,9 @@ DbMysql::DbMysql(){
     qDebug() << "DbMysql cons";
     dbcount++;
     //this->db = QSqlDatabase::database();
-    this->instance = this;
+    //qDebug( "DbMysql[%p]", & this->db );
+    //qDebug() << dbcount << this->db.isValid();
+    //this->instance = this;
 }
 
 DbMysql::~DbMysql(){
@@ -14,47 +16,54 @@ DbMysql::~DbMysql(){
     qDebug() << "~DbMysql()";
 }
 
+/*
 DbMysql* DbMysql::instance = new DbMysql();
 
 DbMysql*
 DbMysql::getInstance(){
-    qDebug() << "getInstance()" << instance << dbcount;
+    //qDebug() << "getInstance()" << instance << dbcount;
     if ( dbcount < 1 ){
         DbMysql();
     }
+    instance = this;
     return instance;
 }
+*/
 
-bool
-DbMysql::db_init(RmtConfValue *conf_value)
+DbMysql::DbMysql(RmtConfValue *conf_value)
 {
-  qDebug() << "DbMysql(RmtConfValue *)"<<*conf_value->db_database << *conf_value->db_username;
-  this->db.addDatabase(*conf_value->db_database);
-  qDebug() << this->db.isValid();
-  //建立连接    数据TODO
-  //QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
-  //db.setHostName("localhost");
-  this->db.setHostName(*conf_value->db_hostname);
-  this->db.setPort((*conf_value->db_port).toInt());
-  this->db.setDatabaseName(*conf_value->db_databasename);
-  //db.setDatabaseName("mysql_odbc");
-  this->db.setUserName(*conf_value->db_username);
-  this->db.setPassword(*conf_value->db_password);
-  //this->query = QSqlQuery(this->db);
-  if( !this->db.open() ){
-    qDebug() << db.lastError();
-  }
-  qDebug( "pdb[%p]", &db );
-  return true;
+    qDebug() << "DbMysql(RmtConfValue *)"<<*conf_value->db_database << *conf_value->db_username;
+    if ( !QSqlDatabase::contains( "DbMysql" ) ){
+        this->db = QSqlDatabase::addDatabase(*conf_value->db_database, "DbMysql" );
+        //建立连接    数据TODO
+        //QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
+        //db.setHostName("localhost");
+        this->db.setHostName(*conf_value->db_hostname);
+        this->db.setPort((*conf_value->db_port).toInt());
+        this->db.setDatabaseName(*conf_value->db_databasename);
+        //db.setDatabaseName("mysql_odbc");
+        this->db.setUserName(*conf_value->db_username);
+        this->db.setPassword(*conf_value->db_password);
+        this->query = QSqlQuery(this->db);
+    } else {
+        this->db = QSqlDatabase::database("DbMysql",true);
+    }
+
+    qDebug() << this->db.isValid();
+
+    if( !this->db.open() ){
+        qDebug() << "init1 open" << db.lastError();
+    }
+    qDebug() << "init2 open" << db.lastError();
+    db.close();
+
 }
 
 bool
 DbMysql::db_open()
 {
-    qDebug( "pdb[%p]", &db );
   if ( !db.open()) {
-      qDebug() << db.lastError();
-       QMessageBox::critical(0, QObject::tr("db_open fail"),
+    QMessageBox::critical(nullptr, QObject::tr("db_open fail"),
       "db_open fail", QMessageBox::Cancel);
         return false;
   } else {
@@ -107,7 +116,7 @@ DbMysql::query_chkuser(QString id, QString pwd ){
     //QSqlRecord rec = query.record();
     //QSqlRecord rec = query.isSelect();
     //qDebug() << "query:" << query.isSelect();
-    this->query = QSqlQuery(QString("select * from tb_rmt_user where user_id=%1 and user_pwd=%2").arg(id).arg(pwd));
+    this->query = QSqlQuery(QString("select * from tb_rmt_user where user_id=%1 and user_pwd=%2").arg(id).arg(pwd),db);
 
      if(!query.next()){
          return false;
@@ -128,7 +137,7 @@ DbMysql::query_reqinput(QString uuid, QString req_no, QString inputdt ){
     this->query.bindValue(":uuid", uuid);
     this->query.bindValue(":req_no", req_no);
     this->query.bindValue(":req_inputdt", inputdt);
-
+    qDebug()  << "query_reqinput:exec";
      if(!query.exec()){
          return false;
     }

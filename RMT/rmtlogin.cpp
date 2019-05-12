@@ -7,7 +7,7 @@ RmtLogin::RmtLogin(QWidget *parent) :
 {
     ui->setupUi(this);    
     this->conf_value = new RmtConfValue();
-    this->dbmysql = DbMysql::getInstance();
+    //this->dbins = DbMysql::getInstance();
     this->msg = new RmtMessageBox();
     connect(this,SIGNAL(signal_login_chk_err(int)),\
             msg,SLOT(slot_msgbox_set_code(int)));
@@ -68,8 +68,8 @@ RmtLogin::login_init_conf(){
       qDebug() << "配置文件错误";
       return false;
   }
-  qDebug() << "init" << this->dbmysql->db_init(this->conf_value);
-  qDebug() << "open" << this->dbmysql->db_open();
+
+    this->dbins = new DbMysql(this->conf_value );
   /*
   if ( !this->dbmysql->db_init(this->conf_value) ){
       emit signal_login_chk_err(ERR_DBINIT);
@@ -103,7 +103,7 @@ RmtLogin::chk_user_pwd(){
 
   qDebug() << "chk_user_pwd()" << str_user << str_pwd;
 
-  if( !dbmysql->query_chkuser(str_user,str_pwd)){
+  if( !dbins->query_chkuser(str_user,str_pwd)){
       qDebug()<< "认证失败";
       return false;
   }

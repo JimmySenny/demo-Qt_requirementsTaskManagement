@@ -72,7 +72,7 @@ RmtConfValue::getRmtConfValue(){
   this->db_username = new QString ( this->conf->GetConf("DATABASE","db_username").toString());
   this->db_password = new QString ( this->conf->GetConf("DATABASE","db_password").toString());
 
-  qDebug() << *this->user_id;
+  qDebug() << "getRmtConfValue:" << *this->user_id;
   return true;
 }
 

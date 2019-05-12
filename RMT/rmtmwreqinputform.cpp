@@ -31,7 +31,7 @@ RmtmwReqInputForm::rmw_reqinput_init(){
 
     this->conf_value = new RmtConfValue();
     this->conf_value->getRmtConfValue();
-    this->db->getInstance();
+    //this->db->getInstance();
     return true;
 }
 
