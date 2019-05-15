@@ -41,7 +41,7 @@ public:
 private:
     Ui::RmtLogin *ui;
     RmtMessageBox * msg;
-    RmtConfValue * conf_value;
+    RmtConfValue * confins;
     DbMysql * dbins;
 };
 

@@ -29,15 +29,21 @@ RmtmwReqInputForm::rmw_reqinput_init(){
     this->ui->dateEdit_expectdt->setMinimumDate(QDate::currentDate());
     this->ui->dateEdit_expectdt->setDate(QDate::currentDate().addDays(10));
 
-    this->conf_value = new RmtConfValue();
-    this->conf_value->getRmtConfValue();
-    //this->db->getInstance();
+    //this->confins = RmtConfValue::getInstance();
+    //this->confins->getRmtConfValue();
+    this->dbins = DbMysql::getInstance();
+    if ( !this->dbins->db_init() ){
+        emit signal_login_chk_err(ERR_DBINIT);
+        this->msg->show();
+        qDebug() << "数据库连接初始化错误";
+        return  false;
+    }
     return true;
 }
 
 void RmtmwReqInputForm::slot_on_pushButton_commit_clicked(){
-    qDebug() << "on_pushButton_commit_clicked";
-    if( !this->db->query_reqinput("111", "111", this->ui->dateEdit_inputdt->text()) ){
+    qDebug() << "RmtmwReqInputForm::on_pushButton_commit_clicked";
+    if( !this->dbins->query_reqinput("111", "111", this->ui->dateEdit_inputdt->text()) ){
         emit this->signal_login_chk_err(APPERR_INPUT);
         this->msg->show();
     }

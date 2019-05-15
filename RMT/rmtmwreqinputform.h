@@ -34,8 +34,8 @@ public slots:
 private:
     Ui::RmtmwReqInputForm *ui;
     RmtMessageBox * msg;
-    RmtConfValue * conf_value;
-    DbMysql * db;
+    RmtConfValue * confins;
+    DbMysql * dbins;
 };
 
 #endif // RMTMWFIRSTFORM_H

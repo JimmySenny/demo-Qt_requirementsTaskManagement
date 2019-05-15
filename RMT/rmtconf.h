@@ -16,12 +16,16 @@ public:
     QVariant GetConf(QString,QString);
     void SetConf(QString,QString,QVariant);
 private:
-    QString  rmtconf_file;
+    QString  fileconf_name;
     QSettings * qsetting;
 };
 
 class RmtConfValue{
 public:
+
+    ~RmtConfValue();
+    static RmtConfValue* getInstance();
+    bool conf_init();
 
   QString *user_id;
   QString *user_pwd;
@@ -32,12 +36,17 @@ public:
   QString *db_username;
   QString *db_password;
 
-  RmtConfValue();
-  ~RmtConfValue();
+
+
   bool getRmtConfValue();
   void setRmtConfValue(RmtConfValue *);
-  RmtConfFunc * conf;
-  QString * conf_file;
+  RmtConfFunc *conffunc;
+
+private:
+    static RmtConfValue* instance;
+    RmtConfValue();
+    QString * pfileconf_name;
+    QFileInfo * pfileconf_info;
 };
 
 

@@ -14,12 +14,14 @@ class DbMysql
 {
 
 public:
-    //static DbMysql* getInstance();
+    static DbMysql* getInstance();
 
     char a[100];
     QSqlDatabase db;
 
-    DbMysql(RmtConfValue *);
+    //DbMysql(RmtConfValue *);
+    bool db_init(RmtConfValue *);
+    bool db_init();
     bool db_open();
     bool db_commit();
     bool db_rollback();
@@ -32,7 +34,7 @@ public:
 private:
     DbMysql();
     ~DbMysql();
-    //DbMysql* instance;
+    static DbMysql* instance;
     QSqlQuery query;
 };
 

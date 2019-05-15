@@ -5,6 +5,7 @@
 #include <QString>
 
 #include <QtCore/QtCore>
+#include <QTranslator>
 #include <QMessageBox>
 
 #include <QTreeWidget>

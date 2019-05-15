@@ -5,9 +5,11 @@ RmtLogin::RmtLogin(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::RmtLogin)
 {
-    ui->setupUi(this);    
-    this->conf_value = new RmtConfValue();
-    //this->dbins = DbMysql::getInstance();
+    ui->setupUi(this);
+
+    this->confins = RmtConfValue::getInstance();
+    //qDebug() <<"RmtLogin"<< (*confins->conf );
+    this->dbins = DbMysql::getInstance();
     this->msg = new RmtMessageBox();
     connect(this,SIGNAL(signal_login_chk_err(int)),\
             msg,SLOT(slot_msgbox_set_code(int)));
@@ -39,52 +41,40 @@ RmtLogin::~RmtLogin()
 
 bool
 RmtLogin::login_init(){
-  this->setWindowTitle("登录界面");
+    this->setWindowTitle("登录界面");
+    this->ui->lineEdit_name->setMaxLength(16);
+    this->ui->lineEdit_name->setMaxLength(16);
 
-  this->ui->lineEdit_name->setMaxLength(16);
-  this->ui->lineEdit_name->setMaxLength(16);
+    /*
+    if ( !this->confins->getRmtConfValue()){
+        emit signal_login_chk_err(ERR_CONF_NOTFUND);
+        this->msg->show();
+        qDebug() << "配置文件不存在";
+        return false;
+    }
+    */
+    if ( !this->dbins->db_init() ){
+        emit signal_login_chk_err(ERR_DBINIT);
+        this->msg->show();
+        qDebug() << "数据库连接初始化错误";
+        return  false;
+    }
 
-  if ( !this->conf_value->getRmtConfValue()){
-      emit signal_login_chk_err(ERR_CONF_NOTFUND);
-      this->msg->show();
-      qDebug() << "配置文件不存在";
-      return false;
-  }
-
-  return true;
+    return true;
 }
 
 bool
 RmtLogin::login_init_conf(){
 //    qDebug() << "DocumentsLocation: " << QStandardPaths::displayName(QStandardPaths::DocumentsLocation);
-  if ( 0 == (*this->conf_value->db_database).length() ||
-       0 == (*this->conf_value->db_hostname).length() ||
-       0 == (*this->conf_value->db_port).length() ||
-       0 == (*this->conf_value->db_databasename).length() ||
-       0 == (*this->conf_value->db_username).length() ||
-       0 == (*this->conf_value->db_password).length() ){
-      emit signal_login_chk_err(ERR_CONF_ARGERR);
-      this->msg->show();
-      qDebug() << "配置文件错误";
-      return false;
-  }
 
-    this->dbins = new DbMysql(this->conf_value );
-  /*
-  if ( !this->dbmysql->db_init(this->conf_value) ){
-      emit signal_login_chk_err(ERR_DBINIT);
-      this->msg->show();
-      qDebug() << "数据库连接初始化错误";
-      return  false;
-  }*/
+    this->ui->lineEdit_name->setText(*this->confins->user_id);
+    this->ui->lineEdit_pwd->setText(*this->confins->user_pwd);
+    this->ui->lineEdit_pwd->setEchoMode(QLineEdit::PasswordEchoOnEdit);
 
-  this->ui->lineEdit_name->setText(*this->conf_value->user_id);
-  this->ui->lineEdit_pwd->setText(*this->conf_value->user_pwd);
-  this->ui->lineEdit_pwd->setEchoMode(QLineEdit::PasswordEchoOnEdit);
+    qDebug() << this->ui->lineEdit_pwd->text();
 
-  qDebug() << this->ui->lineEdit_pwd->text();
+    return true;
 
-  return true;
 }
 
 bool
@@ -134,9 +124,9 @@ RmtLogin::slot_login_pbuttonlogin_to_mainwindow ()
   }
 
     qDebug()<< "登录成功";
-    *conf_value->user_id = this->ui->lineEdit_name->text();
-    *conf_value->user_pwd = this->ui->lineEdit_pwd->text();
-    this->conf_value->setRmtConfValue(conf_value);
+    *confins->user_id = this->ui->lineEdit_name->text();
+    *confins->user_pwd = this->ui->lineEdit_pwd->text();
+    this->confins->setRmtConfValue(confins);
 
     RmtMainWindow * rmtmainwindow = new RmtMainWindow();
     rmtmainwindow->show();

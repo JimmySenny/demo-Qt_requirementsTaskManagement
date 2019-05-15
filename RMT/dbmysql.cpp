@@ -16,20 +16,20 @@ DbMysql::~DbMysql(){
     qDebug() << "~DbMysql()";
 }
 
-/*
+
 DbMysql* DbMysql::instance = new DbMysql();
 
 DbMysql*
 DbMysql::getInstance(){
-    //qDebug() << "getInstance()" << instance << dbcount;
-    if ( dbcount < 1 ){
-        DbMysql();
-    }
-    instance = this;
+    qDebug() << "DbMysql::getInstance()" << instance;
+    //if ( dbcount < 1 ){
+    //    DbMysql();
+    //}
+    //instance = this;
     return instance;
 }
-*/
 
+/*
 DbMysql::DbMysql(RmtConfValue *conf_value)
 {
     qDebug() << "DbMysql(RmtConfValue *)"<<*conf_value->db_database << *conf_value->db_username;
@@ -58,41 +58,84 @@ DbMysql::DbMysql(RmtConfValue *conf_value)
     db.close();
 
 }
+*/
+bool
+DbMysql::db_init(RmtConfValue *conf_value){
+
+    //qDebug() << "DbMysql(RmtConfValue *)"<<*conf_value->db_database << *conf_value->db_username;
+    if ( !QSqlDatabase::contains( "DbMysql" ) ){
+        this->db = QSqlDatabase::addDatabase(*conf_value->db_database, "DbMysql" );
+        //建立连接    数据TODO
+        //QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
+        //db.setHostName("localhost");
+        this->db.setHostName(*conf_value->db_hostname);
+        this->db.setPort((*conf_value->db_port).toInt());
+        this->db.setDatabaseName(*conf_value->db_databasename);
+        //db.setDatabaseName("mysql_odbc");
+        this->db.setUserName(*conf_value->db_username);
+        this->db.setPassword(*conf_value->db_password);
+        this->query = QSqlQuery(this->db);
+    } else {
+        this->db = QSqlDatabase::database("DbMysql",true);
+    }
+
+    qDebug() << "DbMysql::db_init" << this->db.isValid();
+
+    return true;
+}
+
+bool
+DbMysql::db_init(){
+    if ( QSqlDatabase::contains( "DbMysql" ) ){
+        this->db = QSqlDatabase::database("DbMysql",true);
+    }else {
+        return false;
+    }
+
+    qDebug() << "DbMysql::db_init" << this->db.isValid();
+    return true;
+}
 
 bool
 DbMysql::db_open()
 {
-  if ( !db.open()) {
-    QMessageBox::critical(nullptr, QObject::tr("db_open fail"),
-      "db_open fail", QMessageBox::Cancel);
+    if ( !this->db.isValid() ){
         return false;
-  } else {
-//       QMessageBox::critical(0, QObject::tr("db_open succ"),
+    }
+    if ( !this->db.open()) {
+        qDebug()  << "DbMysql::db_open()";
+        QMessageBox::critical(nullptr, QObject::tr("db_open fail"), \
+                              "db_open fail", QMessageBox::Cancel);
+        return false;
+    } else {
+//       QMessageBox::critical(0, QObject::tr("db_open succ"), \
 //        "", QMessageBox::Cancel);
-  }
+    }
 
     return true;
 }
 
 bool
 DbMysql::db_commit(){
-  if( !db.commit() ){
-      return false;
-  }
-  return true;
+    if( !this->db.commit() ){
+        qDebug()  << "DbMysql::db_open()";
+        return false;
+    }
+    return true;
 }
 
 bool
 DbMysql::db_rollback(){
-  if( !db.rollback() ){
-      return false;
-  }
-  return true;
+    if( !this->db.rollback() ){
+        qDebug()  << "DbMysql::db_open()";
+        return false;
+    }
+    return true;
 }
 
 void
 DbMysql::db_close(){
-  return db.close();
+    return this->db.close();
 }
 
 void
@@ -103,10 +146,9 @@ DbMysql::db_test(){
 
 bool
 DbMysql::query_chkuser(QString id, QString pwd ){
-
-  if(!this->db_open()){
-      return false;
-  }
+    if(!this->db_open()){
+        return false;
+    }
     qDebug() << "query_chkuser:" << __LINE__ << id << pwd;
     //QString chkuser = QString("select * from tb_rmt_user where user_id='"+id+"' and user_pwd='"+pwd);
     //QString chkuser = QString("select * from rmt_user ");
@@ -118,12 +160,12 @@ DbMysql::query_chkuser(QString id, QString pwd ){
     //qDebug() << "query:" << query.isSelect();
     this->query = QSqlQuery(QString("select * from tb_rmt_user where user_id=%1 and user_pwd=%2").arg(id).arg(pwd),db);
 
-     if(!query.next()){
+    if(!query.next()){
          return false;
     }
 
-     this->db_close();
-     return true;
+    this->db_close();
+    return true;
 }
 bool
 DbMysql::query_reqinput(QString uuid, QString req_no, QString inputdt ){
@@ -137,11 +179,11 @@ DbMysql::query_reqinput(QString uuid, QString req_no, QString inputdt ){
     this->query.bindValue(":uuid", uuid);
     this->query.bindValue(":req_no", req_no);
     this->query.bindValue(":req_inputdt", inputdt);
-    qDebug()  << "query_reqinput:exec";
-     if(!query.exec()){
-         return false;
-    }
 
-     this->db_close();
-     return true;
+    if(!query.exec()){
+        return false;
+    }
+    qDebug()  << "query_reqinput:exec succ";
+    this->db_close();
+    return true;
 }
